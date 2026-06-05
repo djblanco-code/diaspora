@@ -12,6 +12,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
+import { RequireAuth, RequireOnboarded } from "./components/RouteGuards";
 
 export const router = createBrowserRouter([
   {
@@ -24,12 +25,24 @@ export const router = createBrowserRouter([
       { path: "event/:eventId", Component: EventDetail },
       { path: "organization/:organizationId", Component: OrganizationDetail },
       { path: "about", Component: About },
-      { path: "submit", Component: SubmitEvent },
-      { path: "submit-org", Component: SubmitOrg },
       { path: "login", Component: Login },
       { path: "signup", Component: Signup },
-      { path: "profile", Component: Profile },
-      { path: "profile/edit", Component: EditProfile },
+      // Signed-in users (onboarding allowed to be incomplete here)
+      {
+        Component: RequireAuth,
+        children: [
+          { path: "profile", Component: Profile },
+          { path: "profile/edit", Component: EditProfile },
+        ],
+      },
+      // Signed-in AND onboarded users only
+      {
+        Component: RequireOnboarded,
+        children: [
+          { path: "submit", Component: SubmitEvent },
+          { path: "submit-org", Component: SubmitOrg },
+        ],
+      },
     ],
   },
 ]);
