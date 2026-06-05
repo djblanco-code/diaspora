@@ -20,8 +20,17 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
+
+  const handleGoogle = async () => {
+    setError(null);
+    try {
+      await loginWithGoogle();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Google sign in failed. Please try again.");
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -100,6 +109,7 @@ export default function Login() {
           <Button
             variant="outlined"
             fullWidth
+            onClick={handleGoogle}
             sx={{
               borderColor: "#042C53",
               color: "#042C53",

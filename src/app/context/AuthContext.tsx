@@ -13,6 +13,7 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<User | null>;
+  loginWithGoogle: () => Promise<void>;
   signup: (name: string, email: string, password: string) => Promise<SignupResult>;
   logout: () => Promise<void>;
   updateProfile: (updates: Partial<User>) => Promise<void>;
@@ -87,6 +88,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return profile;
     }
     return null;
+  };
+
+  const loginWithGoogle = async () => {
+    if (!supabase) {
+      throw new Error("Authentication is not configured.");
+    }
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/browse` },
+    });
+    if (error) {
+      throw new Error(error.message);
+    }
   };
 
   const signup = async (name: string, email: string, password: string): Promise<SignupResult> => {
@@ -187,6 +201,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         loading,
         login,
+        loginWithGoogle,
         signup,
         logout,
         updateProfile,
