@@ -2,24 +2,36 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
 import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
+
+const fieldSx = {
+  "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: "#042C53",
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "#042C53",
+  },
+};
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError(null);
     try {
-      await login(email, password);
-      navigate("/profile");
-    } catch (error) {
-      console.error("Login failed:", error);
+      const loggedIn = await login(email, password);
+      navigate(loggedIn && !loggedIn.onboarding_complete ? "/profile/edit" : "/browse");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Sign in failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -37,40 +49,34 @@ export default function Login() {
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-8">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <TextField
-              label="Email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              fullWidth
-              required
-              sx={{
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#042C53"
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "#042C53"
-                }
-              }}
-            />
+          <form onSubmit={handleSubmit}>
+            {error && (
+              <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md px-3 py-2 mb-6">
+                {error}
+              </p>
+            )}
 
-            <TextField
-              label="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              fullWidth
-              required
-              sx={{
-                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#042C53"
-                },
-                "& .MuiInputLabel-root.Mui-focused": {
-                  color: "#042C53"
-                }
-              }}
-            />
+            <Stack spacing={3} sx={{ mb: 3 }}>
+              <TextField
+                label="Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                fullWidth
+                required
+                sx={fieldSx}
+              />
+
+              <TextField
+                label="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                fullWidth
+                required
+                sx={fieldSx}
+              />
+            </Stack>
 
             <Button
               type="submit"
@@ -105,7 +111,7 @@ export default function Login() {
               }
             }}
           >
-            Continue with LinkedIn
+            Continue with Google
           </Button>
 
           <p className="text-center mt-6 text-sm text-gray-600">

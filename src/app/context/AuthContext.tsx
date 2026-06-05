@@ -1,77 +1,129 @@
-import { createContext, useContext, useState, ReactNode } from "react";
-
-interface Review {
-  eventId: string;
-  eventTitle: string;
-  rating: number;
-  text: string;
-  date: string;
-}
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  industry?: string;
-  linkedin_url?: string;
-  communities_part_of: string[];
-  communities_ally: string[];
-  events_attended: string[];
-  reviews: Review[];
-  avatar?: string;
-}
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import {
+  fetchUserProfile,
+  getAuthErrorMessage,
+  isDuplicateSignup,
+  type SignupResult,
+  type User,
+} from "../../lib/profile";
+import { supabase } from "../../lib/supabase";
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => Promise<void>;
-  signup: (name: string, email: string, password: string) => Promise<void>;
-  logout: () => void;
+  loading: boolean;
+  login: (email: string, password: string) => Promise<User | null>;
+  signup: (name: string, email: string, password: string) => Promise<SignupResult>;
+  logout: () => Promise<void>;
   updateProfile: (updates: Partial<User>) => void;
   markAttended: (eventId: string) => void;
   addReview: (eventId: string, eventTitle: string, rating: number, text: string) => void;
   hasAttended: (eventId: string) => boolean;
-  getReview: (eventId: string) => Review | undefined;
+  getReview: (eventId: string) => User["reviews"][number] | undefined;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const login = async (email: string, password: string) => {
-    // Mock login - in production, this would call an API
-    await new Promise(resolve => setTimeout(resolve, 500));
+  // Restore an existing session on load and keep the user in sync with auth
+  // changes (sign in/out, token refresh, and OAuth redirect returns).
+  useEffect(() => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
 
-    // Mock user data
-    setUser({
-      id: "1",
-      name: "Alex Johnson",
-      email: email,
-      industry: "Product Manager · Fintech",
-      linkedin_url: "https://linkedin.com/in/alexjohnson",
-      communities_part_of: ["Black"],
-      communities_ally: ["Latino", "Asian"],
-      events_attended: [],
-      reviews: []
+    let active = true;
+
+    supabase.auth.getSession().then(async ({ data }) => {
+      if (!active) return;
+      if (data.session?.user) {
+        const profile = await fetchUserProfile(data.session.user.id);
+        if (active) setUser(profile);
+      }
+      if (active) setLoading(false);
     });
+
+    const { data: subscription } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (!active) return;
+      if (session?.user) {
+        const profile = await fetchUserProfile(session.user.id);
+        if (active) setUser(profile);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => {
+      active = false;
+      subscription.subscription.unsubscribe();
+    };
+  }, []);
+
+  const login = async (email: string, password: string): Promise<User | null> => {
+    if (!supabase) {
+      throw new Error("Authentication is not configured.");
+    }
+
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      const message = error.message.toLowerCase();
+      if (message.includes("invalid login credentials")) {
+        throw new Error("Invalid email or password.");
+      }
+      if (message.includes("email not confirmed")) {
+        throw new Error("Please confirm your email, then sign in.");
+      }
+      throw new Error(getAuthErrorMessage(error));
+    }
+
+    if (data.user) {
+      const profile = await fetchUserProfile(data.user.id);
+      setUser(profile);
+      return profile;
+    }
+    return null;
   };
 
-  const signup = async (name: string, email: string, password: string) => {
-    // Mock signup - in production, this would call an API
-    await new Promise(resolve => setTimeout(resolve, 500));
+  const signup = async (name: string, email: string, password: string): Promise<SignupResult> => {
+    if (!supabase) {
+      throw new Error("Authentication is not configured.");
+    }
 
-    setUser({
-      id: Date.now().toString(),
-      name,
+    const { data, error } = await supabase.auth.signUp({
       email,
-      communities_part_of: [],
-      communities_ally: [],
-      events_attended: [],
-      reviews: []
+      password,
+      options: { data: { name } },
     });
+
+    if (error) {
+      throw new Error(getAuthErrorMessage(error));
+    }
+
+    if (isDuplicateSignup(data.user)) {
+      throw new Error("Email is already associated with an account");
+    }
+
+    if (!data.session || !data.user) {
+      return "confirm_email";
+    }
+
+    const profile = await fetchUserProfile(data.user.id);
+    if (!profile) {
+      throw new Error("Account created but profile could not be loaded. Try signing in.");
+    }
+
+    setUser(profile);
+    return "signed_in";
   };
 
-  const logout = () => {
+  const logout = async () => {
+    if (supabase) {
+      await supabase.auth.signOut();
+    }
     setUser(null);
   };
 
@@ -123,6 +175,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     <AuthContext.Provider
       value={{
         user,
+        loading,
         login,
         signup,
         logout,
