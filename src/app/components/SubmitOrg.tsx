@@ -64,15 +64,15 @@ export default function SubmitOrg() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#FBF6EE] flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-sm p-8 text-center">
-          <div className="w-16 h-16 bg-[#042C53] rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-[#C79A6A] rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank you!</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-2xl font-bold text-[#322318] mb-2">Thank you!</h2>
+          <p className="text-[#8A7866] mb-6">
             We'll review within 3-5 days and email you when your organization is live.
           </p>
           <Link to="/">
@@ -80,8 +80,8 @@ export default function SubmitOrg() {
               variant="contained"
               fullWidth
               sx={{
-                bgcolor: "#042C53",
-                "&:hover": { bgcolor: "#031d35" },
+                bgcolor: "#3A2A1E",
+                "&:hover": { bgcolor: "#2A1C12" },
                 textTransform: "none",
                 py: 1.5
               }}
@@ -95,13 +95,13 @@ export default function SubmitOrg() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FBF6EE]">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/" className="inline-block">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
+            <div className="text-2xl font-bold text-[#9A6B3C]">Diaspora</div>
+            <div className="text-xs text-[#8A7866] mt-0.5">by Techqueria NYC</div>
           </Link>
         </div>
       </header>
@@ -110,22 +110,22 @@ export default function SubmitOrg() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Link
           to="/browse"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-[#042C53] mb-6 text-sm"
+          className="inline-flex items-center gap-2 text-[#8A7866] hover:text-[#9A6B3C] mb-6 text-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Browse
         </Link>
 
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Add Org</h1>
-          <p className="text-gray-600 mb-8">
+          <h1 className="text-3xl font-bold text-[#322318] mb-2">Add Org</h1>
+          <p className="text-[#8A7866] mb-8">
             Get your organization featured on Diaspora's directory and logo wall.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Organization Details */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+              <h2 className="text-xl font-semibold text-[#322318] mb-4 pb-2 border-b border-gray-200">
                 Organization details
               </h2>
               <div className="space-y-4">
@@ -137,34 +137,34 @@ export default function SubmitOrg() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#4A3422] mb-2">
                     Logo <span className="text-red-600">*</span>
                   </label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={(e) => setLogo(e.target.files?.[0] || null)}
-                    className="block w-full text-sm text-gray-600
+                    className="block w-full text-sm text-[#8A7866]
                       file:mr-4 file:py-2 file:px-4
                       file:rounded-md file:border-0
                       file:text-sm file:font-medium
-                      file:bg-[#042C53] file:text-white
-                      hover:file:bg-[#031d35]
+                      file:bg-[#C79A6A] file:text-white
+                      hover:file:bg-[#2A1C12]
                       file:cursor-pointer cursor-pointer"
                   />
                   {logo && (
-                    <p className="text-sm text-gray-600 mt-2">Selected: {logo.name}</p>
+                    <p className="text-sm text-[#8A7866] mt-2">Selected: {logo.name}</p>
                   )}
-                  <p className="text-xs text-gray-500 mt-1">This will appear in the logo wall</p>
+                  <p className="text-xs text-[#8A7866] mt-1">This will appear in the logo wall</p>
                 </div>
 
                 <TextField
@@ -180,16 +180,16 @@ export default function SubmitOrg() {
                   error={mission.length > 160}
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#4A3422] mb-2">
                     Communities served <span className="text-red-600">*</span>
                   </label>
                   <div className="flex flex-wrap gap-2">
@@ -205,21 +205,21 @@ export default function SubmitOrg() {
                           );
                         }}
                         sx={{
-                          bgcolor: selectedCommunities.includes(community) ? "#042C53" : "white",
-                          color: selectedCommunities.includes(community) ? "white" : "#042C53",
-                          border: "1px solid #042C53",
+                          bgcolor: selectedCommunities.includes(community) ? "#9A6B3C" : "white",
+                          color: selectedCommunities.includes(community) ? "white" : "#9A6B3C",
+                          border: "1px solid #9A6B3C",
                           "&:hover": {
-                            bgcolor: selectedCommunities.includes(community) ? "#031d35" : "#f0f4f8"
+                            bgcolor: selectedCommunities.includes(community) ? "#2A1C12" : "#EFE0C8"
                           }
                         }}
                       />
                     ))}
                   </div>
-                  <p className="text-xs text-gray-500 mt-2">Select at least one</p>
+                  <p className="text-xs text-[#8A7866] mt-2">Select at least one</p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-[#4A3422] mb-2">
                     Focus areas (optional)
                   </label>
                   <div className="flex flex-wrap gap-2">
@@ -235,11 +235,11 @@ export default function SubmitOrg() {
                           );
                         }}
                         sx={{
-                          bgcolor: selectedFocusAreas.includes(area) ? "#042C53" : "white",
-                          color: selectedFocusAreas.includes(area) ? "white" : "#042C53",
-                          border: "1px solid #042C53",
+                          bgcolor: selectedFocusAreas.includes(area) ? "#9A6B3C" : "white",
+                          color: selectedFocusAreas.includes(area) ? "white" : "#9A6B3C",
+                          border: "1px solid #9A6B3C",
                           "&:hover": {
-                            bgcolor: selectedFocusAreas.includes(area) ? "#031d35" : "#f0f4f8"
+                            bgcolor: selectedFocusAreas.includes(area) ? "#2A1C12" : "#EFE0C8"
                           }
                         }}
                       />
@@ -257,10 +257,10 @@ export default function SubmitOrg() {
                   placeholder="https://"
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -273,10 +273,10 @@ export default function SubmitOrg() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -290,10 +290,10 @@ export default function SubmitOrg() {
                   placeholder="https://linkedin.com/company/..."
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -307,10 +307,10 @@ export default function SubmitOrg() {
                   placeholder="https://instagram.com/..."
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -319,7 +319,7 @@ export default function SubmitOrg() {
 
             {/* Your Information */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+              <h2 className="text-xl font-semibold text-[#322318] mb-4 pb-2 border-b border-gray-200">
                 Your information
               </h2>
               <div className="space-y-4">
@@ -331,10 +331,10 @@ export default function SubmitOrg() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -348,10 +348,10 @@ export default function SubmitOrg() {
                   placeholder="e.g., Executive Director, Communications Lead"
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -365,10 +365,10 @@ export default function SubmitOrg() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -380,8 +380,8 @@ export default function SubmitOrg() {
                       onChange={(e) => setIsRepresentative(e.target.checked)}
                       required
                       sx={{
-                        color: "#042C53",
-                        "&.Mui-checked": { color: "#042C53" }
+                        color: "#9A6B3C",
+                        "&.Mui-checked": { color: "#9A6B3C" }
                       }}
                     />
                   }
@@ -398,8 +398,8 @@ export default function SubmitOrg() {
                 fullWidth
                 disabled={!isFormValid()}
                 sx={{
-                  bgcolor: "#042C53",
-                  "&:hover": { bgcolor: "#031d35" },
+                  bgcolor: "#3A2A1E",
+                  "&:hover": { bgcolor: "#2A1C12" },
                   "&.Mui-disabled": {
                     bgcolor: "#e5e7eb",
                     color: "#9ca3af"
@@ -412,7 +412,7 @@ export default function SubmitOrg() {
                 Add Org
               </Button>
               {!isFormValid() && (
-                <p className="text-sm text-gray-500 mt-2 text-center">
+                <p className="text-sm text-[#8A7866] mt-2 text-center">
                   Please fill in all required fields
                 </p>
               )}

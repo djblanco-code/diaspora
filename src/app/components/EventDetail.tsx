@@ -30,9 +30,9 @@ export default function EventDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-500 text-lg mb-4">Event not found</p>
+          <p className="text-[#8A7866] text-lg mb-4">Event not found</p>
           <Link to="/browse">
-            <Button variant="contained" sx={{ bgcolor: "#042C53", "&:hover": { bgcolor: "#031d35" } }}>
+            <Button variant="contained" sx={{ bgcolor: "#3A2A1E", "&:hover": { bgcolor: "#2A1C12" } }}>
               Back to Browse
             </Button>
           </Link>
@@ -101,8 +101,8 @@ export default function EventDetail() {
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/" className="inline-block">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
+            <div className="text-2xl font-bold text-[#9A6B3C]">Diaspora</div>
+            <div className="text-xs text-[#8A7866] mt-0.5">by Techqueria NYC</div>
           </Link>
         </div>
       </header>
@@ -111,7 +111,7 @@ export default function EventDetail() {
       <div className="flex-1 pb-20 lg:pb-8">
         <div className="max-w-4xl mx-auto">
           {/* Hero Image */}
-          <div className="relative aspect-[21/9] bg-gray-200 overflow-hidden">
+          <div className="relative aspect-[21/9] bg-[#EFE0C8] overflow-hidden">
             <img
               src={event.image_url}
               alt={event.title}
@@ -123,7 +123,7 @@ export default function EventDetail() {
               to="/browse"
               className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors"
             >
-              <ArrowLeft className="w-5 h-5 text-gray-900" />
+              <ArrowLeft className="w-5 h-5 text-[#322318]" />
             </Link>
 
             {/* Tags Overlay */}
@@ -133,7 +133,7 @@ export default function EventDetail() {
                   key={community}
                   label={community}
                   sx={{
-                    bgcolor: "#042C53",
+                    bgcolor: "#3A2A1E",
                     color: "white",
                     fontWeight: 500
                   }}
@@ -144,8 +144,8 @@ export default function EventDetail() {
                 variant="outlined"
                 sx={{
                   bgcolor: "white",
-                  borderColor: "#042C53",
-                  color: "#042C53",
+                  borderColor: "#9A6B3C",
+                  color: "#9A6B3C",
                   fontWeight: 500
                 }}
               />
@@ -155,14 +155,14 @@ export default function EventDetail() {
           {/* Content */}
           <div className="px-4 sm:px-6 lg:px-8 py-8">
             {/* Title */}
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-[#322318] mb-4">
               {event.title}
             </h1>
 
             {/* Goal */}
             {event.goal && (
-              <div className="border-l-4 border-[#042C53] pl-4 mb-8">
-                <p className="text-lg text-gray-700 leading-relaxed">
+              <div className="border-l-4 border-[#9A6B3C] pl-4 mb-8">
+                <p className="text-lg text-[#4A3422] leading-relaxed">
                   {event.goal}
                 </p>
               </div>
@@ -170,14 +170,14 @@ export default function EventDetail() {
 
             {/* Know Before You Go */}
             <div className="mb-8">
-              <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-4">
+              <h2 className="text-xs uppercase tracking-wide text-[#8A7866] mb-4">
                 Know before you go
               </h2>
 
               {/* Location */}
               <div className="flex items-start gap-3 mb-4">
-                <MapPin className="w-5 h-5 text-[#042C53] mt-0.5 shrink-0" />
-                <p className="text-gray-900">
+                <MapPin className="w-5 h-5 text-[#9A6B3C] mt-0.5 shrink-0" />
+                <p className="text-[#322318]">
                   {event.location} · {event.neighborhood}
                 </p>
               </div>
@@ -186,35 +186,35 @@ export default function EventDetail() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="border border-gray-200 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-1">
-                    <Calendar className="w-4 h-4 text-[#042C53]" />
-                    <span className="text-xs uppercase text-gray-500">Date</span>
+                    <Calendar className="w-4 h-4 text-[#9A6B3C]" />
+                    <span className="text-xs uppercase text-[#8A7866]">Date</span>
                   </div>
-                  <p className="text-gray-900 font-medium">{formattedDate}</p>
+                  <p className="text-[#322318] font-medium">{formattedDate}</p>
                 </div>
 
                 <div className="border border-gray-200 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-1">
-                    <Clock className="w-4 h-4 text-[#042C53]" />
-                    <span className="text-xs uppercase text-gray-500">Time</span>
+                    <Clock className="w-4 h-4 text-[#9A6B3C]" />
+                    <span className="text-xs uppercase text-[#8A7866]">Time</span>
                   </div>
-                  <p className="text-gray-900 font-medium">{event.time}</p>
+                  <p className="text-[#322318] font-medium">{event.time}</p>
                 </div>
 
                 <div className="border border-gray-200 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-1">
-                    <DollarSign className="w-4 h-4 text-[#042C53]" />
-                    <span className="text-xs uppercase text-gray-500">Cost</span>
+                    <DollarSign className="w-4 h-4 text-[#9A6B3C]" />
+                    <span className="text-xs uppercase text-[#8A7866]">Cost</span>
                   </div>
-                  <p className="text-gray-900 font-medium">{event.price}</p>
+                  <p className="text-[#322318] font-medium">{event.price}</p>
                 </div>
 
                 {event.capacity && (
                   <div className="border border-gray-200 rounded-lg p-4">
                     <div className="flex items-center gap-2 mb-1">
-                      <Users className="w-4 h-4 text-[#042C53]" />
-                      <span className="text-xs uppercase text-gray-500">Capacity</span>
+                      <Users className="w-4 h-4 text-[#9A6B3C]" />
+                      <span className="text-xs uppercase text-[#8A7866]">Capacity</span>
                     </div>
-                    <p className="text-gray-900 font-medium">{event.capacity}</p>
+                    <p className="text-[#322318] font-medium">{event.capacity}</p>
                   </div>
                 )}
               </div>
@@ -223,20 +223,20 @@ export default function EventDetail() {
             {/* What's Included */}
             {(event.food || event.drinks) && (
               <div className="mb-8">
-                <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-4">
+                <h2 className="text-xs uppercase tracking-wide text-[#8A7866] mb-4">
                   What's included
                 </h2>
                 <div className="space-y-3">
                   {event.food && (
                     <div className="flex items-center gap-3">
-                      <Utensils className="w-5 h-5 text-[#042C53] shrink-0" />
-                      <p className="text-gray-900">{event.food}</p>
+                      <Utensils className="w-5 h-5 text-[#9A6B3C] shrink-0" />
+                      <p className="text-[#322318]">{event.food}</p>
                     </div>
                   )}
                   {event.drinks && (
                     <div className="flex items-center gap-3">
-                      <Wine className="w-5 h-5 text-[#042C53] shrink-0" />
-                      <p className="text-gray-900">{event.drinks}</p>
+                      <Wine className="w-5 h-5 text-[#9A6B3C] shrink-0" />
+                      <p className="text-[#322318]">{event.drinks}</p>
                     </div>
                   )}
                 </div>
@@ -246,16 +246,16 @@ export default function EventDetail() {
             {/* Run of Show */}
             {itinerarySteps.length > 0 && (
               <div className="mb-8">
-                <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-4">
+                <h2 className="text-xs uppercase tracking-wide text-[#8A7866] mb-4">
                   Run of show
                 </h2>
                 <div className="space-y-2">
                   {itinerarySteps.map((step, index) => (
                     <div key={index} className="flex gap-4">
-                      <span className="text-[#042C53] font-semibold whitespace-nowrap">
+                      <span className="text-[#9A6B3C] font-semibold whitespace-nowrap">
                         {step.time}
                       </span>
-                      <span className="text-gray-700">{step.label}</span>
+                      <span className="text-[#4A3422]">{step.label}</span>
                     </div>
                   ))}
                 </div>
@@ -265,26 +265,26 @@ export default function EventDetail() {
             {/* Who It's For */}
             {event.who_for && (
               <div className="mb-8">
-                <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-3">
+                <h2 className="text-xs uppercase tracking-wide text-[#8A7866] mb-3">
                   Who it's for
                 </h2>
-                <p className="text-gray-900">{event.who_for}</p>
+                <p className="text-[#322318]">{event.who_for}</p>
               </div>
             )}
 
             {/* Hosted By */}
             <div className="mb-8">
-              <h2 className="text-xs uppercase tracking-wide text-gray-500 mb-3">
+              <h2 className="text-xs uppercase tracking-wide text-[#8A7866] mb-3">
                 Hosted by
               </h2>
-              <div className="bg-gray-50 rounded-lg p-5 flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#042C53] flex items-center justify-center text-white font-bold shrink-0">
+              <div className="bg-[#FBF6EE] rounded-lg p-5 flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-[#C79A6A] flex items-center justify-center text-white font-bold shrink-0">
                   {getInitials(event.org)}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">{event.org}</h3>
+                  <h3 className="font-semibold text-[#322318] mb-1">{event.org}</h3>
                   {event.org_mission && (
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-sm text-[#8A7866] leading-relaxed">
                       {event.org_mission}
                     </p>
                   )}
@@ -305,8 +305,8 @@ export default function EventDetail() {
                   fullWidth
                   endIcon={<ExternalLink className="w-4 h-4" />}
                   sx={{
-                    bgcolor: "#042C53",
-                    "&:hover": { bgcolor: "#031d35" },
+                    bgcolor: "#3A2A1E",
+                    "&:hover": { bgcolor: "#2A1C12" },
                     textTransform: "none",
                     py: 1.5,
                     fontSize: "1rem",
@@ -325,13 +325,13 @@ export default function EventDetail() {
                       fullWidth
                       onClick={handleMarkAttended}
                       sx={{
-                        borderColor: "#042C53",
-                        color: "#042C53",
+                        borderColor: "#9A6B3C",
+                        color: "#9A6B3C",
                         textTransform: "none",
                         py: 1.5,
                         "&:hover": {
-                          borderColor: "#031d35",
-                          bgcolor: "#f0f4f8"
+                          borderColor: "#2A1C12",
+                          bgcolor: "#EFE0C8"
                         }
                       }}
                     >
@@ -361,8 +361,8 @@ export default function EventDetail() {
               )}
 
               {!user && (
-                <p className="text-sm text-gray-500 text-center">
-                  <Link to="/login" className="text-[#042C53] hover:underline">
+                <p className="text-sm text-[#8A7866] text-center">
+                  <Link to="/login" className="text-[#9A6B3C] hover:underline">
                     Sign in
                   </Link>{" "}
                   to mark as attended and leave a review
@@ -386,7 +386,7 @@ export default function EventDetail() {
         <DialogContent>
           <div className="space-y-4 pt-2">
             <div>
-              <p className="text-sm font-medium text-gray-700 mb-2">Rating</p>
+              <p className="text-sm font-medium text-[#4A3422] mb-2">Rating</p>
               <div className="flex gap-1">
                 {[1, 2, 3, 4, 5].map(star => (
                   <button
@@ -419,10 +419,10 @@ export default function EventDetail() {
               placeholder="Share your experience at this event..."
               sx={{
                 "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                  borderColor: "#042C53"
+                  borderColor: "#9A6B3C"
                 },
                 "& .MuiInputLabel-root.Mui-focused": {
-                  color: "#042C53"
+                  color: "#9A6B3C"
                 }
               }}
             />
@@ -440,8 +440,8 @@ export default function EventDetail() {
             variant="contained"
             disabled={rating === 0 || reviewText.trim() === ""}
             sx={{
-              bgcolor: "#042C53",
-              "&:hover": { bgcolor: "#031d35" },
+              bgcolor: "#3A2A1E",
+              "&:hover": { bgcolor: "#2A1C12" },
               textTransform: "none"
             }}
           >

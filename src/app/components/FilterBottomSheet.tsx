@@ -75,8 +75,8 @@ export default function FilterBottomSheet({
                     checked={selectedCommunities.includes(community.name)}
                     onChange={() => onToggleCommunity(community.name)}
                     sx={{
-                      color: "#042C53",
-                      "&.Mui-checked": { color: "#042C53" }
+                      color: "#9A6B3C",
+                      "&.Mui-checked": { color: "#9A6B3C" }
                     }}
                   />
                 }
@@ -96,8 +96,8 @@ export default function FilterBottomSheet({
                     checked={selectedTypes.includes(type)}
                     onChange={() => onToggleType(type)}
                     sx={{
-                      color: "#042C53",
-                      "&.Mui-checked": { color: "#042C53" }
+                      color: "#9A6B3C",
+                      "&.Mui-checked": { color: "#9A6B3C" }
                     }}
                   />
                 }
@@ -117,8 +117,8 @@ export default function FilterBottomSheet({
                     checked={selectedIndustries.includes(industry)}
                     onChange={() => onToggleIndustry(industry)}
                     sx={{
-                      color: "#042C53",
-                      "&.Mui-checked": { color: "#042C53" }
+                      color: "#9A6B3C",
+                      "&.Mui-checked": { color: "#9A6B3C" }
                     }}
                   />
                 }
@@ -134,22 +134,22 @@ export default function FilterBottomSheet({
               <RadioGroup value={dateFilter} onChange={e => onDateFilterChange(e.target.value as DateFilter)}>
                 <FormControlLabel
                   value="week"
-                  control={<Radio sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />}
+                  control={<Radio sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />}
                   label="This week"
                 />
                 <FormControlLabel
                   value="weekend"
-                  control={<Radio sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />}
+                  control={<Radio sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />}
                   label="This weekend"
                 />
                 <FormControlLabel
                   value="month"
-                  control={<Radio sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />}
+                  control={<Radio sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />}
                   label="This month"
                 />
                 <FormControlLabel
                   value="any"
-                  control={<Radio sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />}
+                  control={<Radio sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />}
                   label="Any"
                 />
               </RadioGroup>
@@ -167,8 +167,8 @@ export default function FilterBottomSheet({
               onClose();
             }}
             sx={{
-              borderColor: "#042C53",
-              color: "#042C53",
+              borderColor: "#9A6B3C",
+              color: "#9A6B3C",
               textTransform: "none",
               py: 1.5
             }}
@@ -180,8 +180,8 @@ export default function FilterBottomSheet({
             fullWidth
             onClick={onClose}
             sx={{
-              bgcolor: "#042C53",
-              "&:hover": { bgcolor: "#031d35" },
+              bgcolor: "#3A2A1E",
+              "&:hover": { bgcolor: "#2A1C12" },
               textTransform: "none",
               py: 1.5
             }}

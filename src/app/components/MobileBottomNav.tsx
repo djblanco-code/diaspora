@@ -14,7 +14,7 @@ export default function MobileBottomNav() {
 
   const linkClass = (active: boolean) =>
     `flex flex-col items-center justify-center gap-1 ${
-      active ? "text-[#042C53]" : "text-gray-500"
+      active ? "text-[#9A6B3C]" : "text-[#8A7866]"
     }`;
 
   return (

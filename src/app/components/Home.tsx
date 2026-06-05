@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* NAVY HERO */}
-      <section className="bg-[#042C53] text-white">
+      <section className="bg-[#3A2A1E] text-white">
         {/* Top Nav */}
         <Navbar variant="navy" />
 
@@ -34,8 +34,8 @@ export default function Home() {
                   endIcon={<ArrowRight className="w-5 h-5" />}
                   sx={{
                     bgcolor: "white",
-                    color: "#042C53",
-                    "&:hover": { bgcolor: "#f9fafb" },
+                    color: "#9A6B3C",
+                    "&:hover": { bgcolor: "#F1E7D6" },
                     textTransform: "none",
                     px: 4,
                     py: 1.5,
@@ -57,21 +57,21 @@ export default function Home() {
       {/* MISSION */}
       <section className="bg-white py-16 sm:py-24">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-20">
-          <p className="text-xs uppercase tracking-wide text-gray-500 mb-6">Our mission</p>
-          <p className="text-2xl sm:text-3xl lg:text-4xl text-gray-900 leading-relaxed">
+          <p className="text-xs uppercase tracking-wide text-[#8A7866] mb-6">Our mission</p>
+          <p className="text-2xl sm:text-3xl lg:text-4xl text-[#322318] leading-relaxed">
             Every week, NYC's diaspora communities host panels, mixers, and workshops that can change a career. They're just scattered across a dozen platforms and group chats, easy to miss. Diaspora brings them into one place, so finding your people and growing your career become the same move.
           </p>
         </div>
       </section>
 
       {/* POWERED BY THE ORGS */}
-      <section className="bg-gray-50 py-16 sm:py-24 overflow-hidden">
+      <section className="bg-[#FBF6EE] py-16 sm:py-24 overflow-hidden">
         <div className="max-w-[1200px] mx-auto">
           <div className="px-6 lg:px-20 mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#322318] mb-4">
               Powered by the orgs doing the work
             </h2>
-            <p className="text-xl text-gray-600 mb-4">
+            <p className="text-xl text-[#8A7866] mb-4">
               Events from the organizations already building the rooms.
             </p>
           </div>
@@ -120,7 +120,7 @@ export default function Home() {
                       const parent = target.parentElement;
                       if (parent && !parent.querySelector('.fallback-text')) {
                         const text = document.createElement('div');
-                        text.className = 'fallback-text text-sm font-semibold text-gray-700 text-center';
+                        text.className = 'fallback-text text-sm font-semibold text-[#4A3422] text-center';
                         text.textContent = org.name;
                         parent.appendChild(text);
                       }
@@ -169,7 +169,7 @@ export default function Home() {
                       const parent = target.parentElement;
                       if (parent && !parent.querySelector('.fallback-text')) {
                         const text = document.createElement('div');
-                        text.className = 'fallback-text text-sm font-semibold text-gray-700 text-center';
+                        text.className = 'fallback-text text-sm font-semibold text-[#4A3422] text-center';
                         text.textContent = org.name;
                         parent.appendChild(text);
                       }
@@ -186,10 +186,10 @@ export default function Home() {
       <section className="bg-white py-16 sm:py-24">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-20">
           <div className="flex items-end justify-between mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#322318]">
               Happening soon
             </h2>
-            <Link to="/browse" className="text-[#042C53] hover:underline font-medium">
+            <Link to="/browse" className="text-[#9A6B3C] hover:underline font-medium">
               See all events →
             </Link>
           </div>
@@ -200,7 +200,7 @@ export default function Home() {
                 to={`/event/${event.id}`}
                 className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                <div className="aspect-[16/9] bg-gray-200 overflow-hidden relative">
+                <div className="aspect-[16/9] bg-[#EFE0C8] overflow-hidden relative">
                   <img
                     src={event.image_url}
                     alt={event.title}
@@ -211,7 +211,7 @@ export default function Home() {
                       label={event.community[0]}
                       size="small"
                       sx={{
-                        bgcolor: "#042C53",
+                        bgcolor: "#3A2A1E",
                         color: "white",
                         fontSize: "0.75rem"
                       }}
@@ -222,18 +222,18 @@ export default function Home() {
                       variant="outlined"
                       sx={{
                         bgcolor: "white",
-                        borderColor: "#042C53",
-                        color: "#042C53",
+                        borderColor: "#9A6B3C",
+                        color: "#9A6B3C",
                         fontSize: "0.75rem"
                       }}
                     />
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">
+                  <h3 className="font-semibold text-[#322318] mb-2 line-clamp-2">
                     {event.title}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-[#8A7866]">
                     {new Date(event.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })} · {event.org}
                   </p>
                 </div>
@@ -247,21 +247,21 @@ export default function Home() {
       <footer className="bg-white border-t border-gray-200 py-8">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-20">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-gray-600 font-medium">Diaspora · NYC</p>
+            <p className="text-[#8A7866] font-medium">Diaspora · NYC</p>
             <div className="flex items-center gap-6">
-              <Link to="/browse" className="text-gray-600 hover:text-[#042C53] transition-colors">
+              <Link to="/browse" className="text-[#8A7866] hover:text-[#9A6B3C] transition-colors">
                 Browse
               </Link>
-              <Link to="/browse" className="text-gray-600 hover:text-[#042C53] transition-colors">
+              <Link to="/browse" className="text-[#8A7866] hover:text-[#9A6B3C] transition-colors">
                 Communities
               </Link>
-              <Link to="/about" className="text-gray-600 hover:text-[#042C53] transition-colors">
+              <Link to="/about" className="text-[#8A7866] hover:text-[#9A6B3C] transition-colors">
                 About
               </Link>
-              <Link to="/submit" className="text-gray-600 hover:text-[#042C53] transition-colors">
+              <Link to="/submit" className="text-[#8A7866] hover:text-[#9A6B3C] transition-colors">
                 Add Event
               </Link>
-              <Link to="/submit-org" className="text-gray-600 hover:text-[#042C53] transition-colors">
+              <Link to="/submit-org" className="text-[#8A7866] hover:text-[#9A6B3C] transition-colors">
                 Add Org
               </Link>
             </div>

@@ -12,11 +12,11 @@ export default function Profile() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#FBF6EE] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-500 text-lg mb-4">Please sign in to view your profile</p>
+          <p className="text-[#8A7866] text-lg mb-4">Please sign in to view your profile</p>
           <Link to="/login">
-            <Button variant="contained" sx={{ bgcolor: "#042C53", "&:hover": { bgcolor: "#031d35" } }}>
+            <Button variant="contained" sx={{ bgcolor: "#3A2A1E", "&:hover": { bgcolor: "#2A1C12" } }}>
               Sign in
             </Button>
           </Link>
@@ -36,7 +36,7 @@ export default function Profile() {
   const attendedEvents = events.filter(e => user.events_attended.includes(e.id));
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FBF6EE]">
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <Navbar />
@@ -48,7 +48,7 @@ export default function Profile() {
           <Button
             variant="text"
             onClick={logout}
-            sx={{ color: "#042C53", textTransform: "none" }}
+            sx={{ color: "#9A6B3C", textTransform: "none" }}
           >
             Sign out
           </Button>
@@ -56,7 +56,7 @@ export default function Profile() {
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 mb-6">
           {/* Profile Header */}
           <div className="flex items-start gap-6 mb-6 pb-6 border-b border-gray-200">
-            <div className="w-20 h-20 rounded-full bg-[#042C53] flex items-center justify-center text-white text-2xl font-bold shrink-0">
+            <div className="w-20 h-20 rounded-full bg-[#C79A6A] flex items-center justify-center text-white text-2xl font-bold shrink-0">
               {user.avatar ? (
                 <img src={user.avatar} alt={user.name} className="w-full h-full rounded-full object-cover" />
               ) : (
@@ -65,9 +65,9 @@ export default function Profile() {
             </div>
 
             <div className="flex-1">
-              <h1 className="text-2xl font-bold text-gray-900 mb-1">{user.name}</h1>
+              <h1 className="text-2xl font-bold text-[#322318] mb-1">{user.name}</h1>
               {user.industry && (
-                <p className="text-gray-600 mb-2">{user.industry}</p>
+                <p className="text-[#8A7866] mb-2">{user.industry}</p>
               )}
 
               <div className="flex flex-col gap-2 mb-3">
@@ -76,14 +76,14 @@ export default function Profile() {
                     href={user.linkedin_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[#042C53] hover:underline text-sm"
+                    className="inline-flex items-center gap-1 text-[#9A6B3C] hover:underline text-sm"
                   >
                     <Linkedin className="w-4 h-4" />
                     LinkedIn
                   </a>
                 )}
 
-                <div className="inline-flex items-center gap-1 text-sm text-gray-500">
+                <div className="inline-flex items-center gap-1 text-sm text-[#8A7866]">
                   <Lock className="w-4 h-4" />
                   {user.email} · Account only
                 </div>
@@ -94,12 +94,12 @@ export default function Profile() {
                   variant="outlined"
                   size="small"
                   sx={{
-                    borderColor: "#042C53",
-                    color: "#042C53",
+                    borderColor: "#9A6B3C",
+                    color: "#9A6B3C",
                     textTransform: "none",
                     "&:hover": {
-                      borderColor: "#031d35",
-                      bgcolor: "#f0f4f8"
+                      borderColor: "#2A1C12",
+                      bgcolor: "#EFE0C8"
                     }
                   }}
                 >
@@ -112,7 +112,7 @@ export default function Profile() {
           {/* Identity Block */}
           <div className="mb-6 pb-6 border-b border-gray-200">
             <div className="mb-4">
-              <h3 className="text-sm font-medium text-gray-700 mb-2">Part of</h3>
+              <h3 className="text-sm font-medium text-[#4A3422] mb-2">Part of</h3>
               <div className="flex flex-wrap gap-2">
                 {user.communities_part_of.length > 0 ? (
                   user.communities_part_of.map(community => (
@@ -120,7 +120,7 @@ export default function Profile() {
                       key={community}
                       label={community}
                       sx={{
-                        bgcolor: "#042C53",
+                        bgcolor: "#3A2A1E",
                         color: "white",
                         fontWeight: 500
                       }}
@@ -133,7 +133,7 @@ export default function Profile() {
             </div>
 
             <div>
-              <h3 className="text-sm font-medium text-gray-700 mb-2">Ally to</h3>
+              <h3 className="text-sm font-medium text-[#4A3422] mb-2">Ally to</h3>
               <div className="flex flex-wrap gap-2">
                 {user.communities_ally.length > 0 ? (
                   user.communities_ally.map(community => (
@@ -142,8 +142,8 @@ export default function Profile() {
                       label={community}
                       variant="outlined"
                       sx={{
-                        borderColor: "#042C53",
-                        color: "#042C53",
+                        borderColor: "#9A6B3C",
+                        color: "#9A6B3C",
                         fontWeight: 500
                       }}
                     />
@@ -159,18 +159,18 @@ export default function Profile() {
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="border border-gray-200 rounded-lg p-4 text-center">
               <div className="flex items-center justify-center gap-2 mb-1">
-                <Calendar className="w-5 h-5 text-[#042C53]" />
-                <span className="text-2xl font-bold text-gray-900">{user.events_attended.length}</span>
+                <Calendar className="w-5 h-5 text-[#9A6B3C]" />
+                <span className="text-2xl font-bold text-[#322318]">{user.events_attended.length}</span>
               </div>
-              <p className="text-sm text-gray-600">Events attended</p>
+              <p className="text-sm text-[#8A7866]">Events attended</p>
             </div>
 
             <div className="border border-gray-200 rounded-lg p-4 text-center">
               <div className="flex items-center justify-center gap-2 mb-1">
-                <FileText className="w-5 h-5 text-[#042C53]" />
-                <span className="text-2xl font-bold text-gray-900">{user.reviews.length}</span>
+                <FileText className="w-5 h-5 text-[#9A6B3C]" />
+                <span className="text-2xl font-bold text-[#322318]">{user.reviews.length}</span>
               </div>
-              <p className="text-sm text-gray-600">Reviews written</p>
+              <p className="text-sm text-[#8A7866]">Reviews written</p>
             </div>
           </div>
         </div>
@@ -178,9 +178,9 @@ export default function Profile() {
         {/* Events Attended */}
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 mb-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-gray-900">Events attended</h2>
+            <h2 className="text-lg font-semibold text-[#322318]">Events attended</h2>
             {attendedEvents.length > 3 && (
-              <button className="text-sm text-[#042C53] hover:underline">See all</button>
+              <button className="text-sm text-[#9A6B3C] hover:underline">See all</button>
             )}
           </div>
 
@@ -190,12 +190,12 @@ export default function Profile() {
                 <Link
                   key={event.id}
                   to={`/event/${event.id}`}
-                  className="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex items-start gap-3 p-3 rounded-lg hover:bg-[#FBF6EE] transition-colors"
                 >
-                  <Calendar className="w-5 h-5 text-[#042C53] mt-0.5 shrink-0" />
+                  <Calendar className="w-5 h-5 text-[#9A6B3C] mt-0.5 shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-gray-900 mb-1">{event.title}</h3>
-                    <p className="text-sm text-gray-600">
+                    <h3 className="font-medium text-[#322318] mb-1">{event.title}</h3>
+                    <p className="text-sm text-[#8A7866]">
                       {new Date(event.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })} · {event.org}
                     </p>
                   </div>
@@ -203,7 +203,7 @@ export default function Profile() {
                     label={event.community[0]}
                     size="small"
                     sx={{
-                      bgcolor: "#042C53",
+                      bgcolor: "#3A2A1E",
                       color: "white",
                       fontSize: "0.75rem"
                     }}
@@ -212,7 +212,7 @@ export default function Profile() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8">
+            <p className="text-[#8A7866] text-center py-8">
               You haven't marked any events as attended yet.
             </p>
           )}
@@ -220,14 +220,14 @@ export default function Profile() {
 
         {/* Reviews */}
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Reviews</h2>
+          <h2 className="text-lg font-semibold text-[#322318] mb-4">Reviews</h2>
 
           {user.reviews.length > 0 ? (
             <div className="space-y-4">
               {user.reviews.map((review, index) => (
                 <div key={index} className="border border-gray-200 rounded-lg p-4">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-medium text-gray-900">{review.eventTitle}</h3>
+                    <h3 className="font-medium text-[#322318]">{review.eventTitle}</h3>
                     <div className="flex gap-0.5">
                       {[1, 2, 3, 4, 5].map(star => (
                         <Star
@@ -239,7 +239,7 @@ export default function Profile() {
                       ))}
                     </div>
                   </div>
-                  <p className="text-gray-700 text-sm leading-relaxed">{review.text}</p>
+                  <p className="text-[#4A3422] text-sm leading-relaxed">{review.text}</p>
                   <p className="text-xs text-gray-400 mt-2">
                     {new Date(review.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
                   </p>
@@ -247,7 +247,7 @@ export default function Profile() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8">
+            <p className="text-[#8A7866] text-center py-8">
               You haven't written any reviews yet.
             </p>
           )}

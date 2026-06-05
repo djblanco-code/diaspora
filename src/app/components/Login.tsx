@@ -8,10 +8,10 @@ import Divider from "@mui/material/Divider";
 
 const fieldSx = {
   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-    borderColor: "#042C53",
+    borderColor: "#9A6B3C",
   },
   "& .MuiInputLabel-root.Mui-focused": {
-    color: "#042C53",
+    color: "#9A6B3C",
   },
 };
 
@@ -47,14 +47,14 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#FBF6EE] flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
-            <div className="text-3xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-1">by Techqueria NYC</div>
+            <div className="text-3xl font-bold text-[#9A6B3C]">Diaspora</div>
+            <div className="text-xs text-[#8A7866] mt-1">by Techqueria NYC</div>
           </Link>
-          <p className="text-gray-600 mt-2">Sign in to your account</p>
+          <p className="text-[#8A7866] mt-2">Sign in to your account</p>
         </div>
 
         <div className="bg-white rounded-lg shadow-sm p-8">
@@ -93,8 +93,8 @@ export default function Login() {
               fullWidth
               disabled={loading}
               sx={{
-                bgcolor: "#042C53",
-                "&:hover": { bgcolor: "#031d35" },
+                bgcolor: "#3A2A1E",
+                "&:hover": { bgcolor: "#2A1C12" },
                 textTransform: "none",
                 py: 1.5,
                 fontSize: "1rem"
@@ -111,29 +111,29 @@ export default function Login() {
             fullWidth
             onClick={handleGoogle}
             sx={{
-              borderColor: "#042C53",
-              color: "#042C53",
+              borderColor: "#9A6B3C",
+              color: "#9A6B3C",
               textTransform: "none",
               py: 1.5,
               "&:hover": {
-                borderColor: "#031d35",
-                bgcolor: "#f0f4f8"
+                borderColor: "#2A1C12",
+                bgcolor: "#EFE0C8"
               }
             }}
           >
             Continue with Google
           </Button>
 
-          <p className="text-center mt-6 text-sm text-gray-600">
+          <p className="text-center mt-6 text-sm text-[#8A7866]">
             Don't have an account?{" "}
-            <Link to="/signup" className="text-[#042C53] font-medium hover:underline">
+            <Link to="/signup" className="text-[#9A6B3C] font-medium hover:underline">
               Sign up
             </Link>
           </p>
         </div>
 
-        <p className="text-center mt-4 text-sm text-gray-500">
-          <Link to="/browse" className="hover:text-[#042C53]">
+        <p className="text-center mt-4 text-sm text-[#8A7866]">
+          <Link to="/browse" className="hover:text-[#9A6B3C]">
             Continue browsing without an account
           </Link>
         </p>

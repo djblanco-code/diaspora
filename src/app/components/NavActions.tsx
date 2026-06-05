@@ -16,24 +16,24 @@ export default function NavActions({ variant = "light" }: { variant?: Variant })
         "&:hover": { borderColor: "white", bgcolor: "rgba(255, 255, 255, 0.1)" },
       }
     : {
-        borderColor: "#042C53",
-        color: "#042C53",
+        borderColor: "#9A6B3C",
+        color: "#9A6B3C",
         textTransform: "none",
-        "&:hover": { borderColor: "#031d35", bgcolor: "#f0f4f8" },
+        "&:hover": { borderColor: "#2A1C12", bgcolor: "#EFE0C8" },
       };
 
   const containedSx = isNavy
     ? {
         bgcolor: "white",
-        color: "#042C53",
+        color: "#9A6B3C",
         textTransform: "none",
-        "&:hover": { bgcolor: "#f9fafb" },
+        "&:hover": { bgcolor: "#F1E7D6" },
       }
     : {
-        bgcolor: "#042C53",
+        bgcolor: "#3A2A1E",
         color: "white",
         textTransform: "none",
-        "&:hover": { bgcolor: "#031d35" },
+        "&:hover": { bgcolor: "#2A1C12" },
       };
 
   if (!user) {

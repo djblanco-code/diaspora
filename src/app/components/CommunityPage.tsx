@@ -17,9 +17,9 @@ export default function CommunityPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-500 text-lg mb-4">Community not found</p>
+          <p className="text-[#8A7866] text-lg mb-4">Community not found</p>
           <Link to="/browse">
-            <Button variant="contained" sx={{ bgcolor: "#042C53", "&:hover": { bgcolor: "#031d35" } }}>
+            <Button variant="contained" sx={{ bgcolor: "#3A2A1E", "&:hover": { bgcolor: "#2A1C12" } }}>
               Back to Browse
             </Button>
           </Link>
@@ -34,14 +34,14 @@ export default function CommunityPage() {
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/" className="inline-block">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
+            <div className="text-2xl font-bold text-[#9A6B3C]">Diaspora</div>
+            <div className="text-xs text-[#8A7866] mt-0.5">by Techqueria NYC</div>
           </Link>
         </div>
       </header>
 
       {/* Hero */}
-      <div className="bg-gradient-to-br from-[#042C53] to-[#063d6b] text-white">
+      <div className="bg-gradient-to-br from-[#9A6B3C] to-[#063d6b] text-white">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <Link
             to="/browse"
@@ -56,10 +56,10 @@ export default function CommunityPage() {
       </div>
 
       {/* Events */}
-      <div className="flex-1 bg-gray-50">
+      <div className="flex-1 bg-[#FBF6EE]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
           <div className="mb-6">
-            <p className="text-gray-600">
+            <p className="text-[#8A7866]">
               {communityEvents.length} event{communityEvents.length !== 1 ? "s" : ""}
             </p>
           </div>
@@ -72,7 +72,7 @@ export default function CommunityPage() {
 
           {communityEvents.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No upcoming events for this community.</p>
+              <p className="text-[#8A7866] text-lg">No upcoming events for this community.</p>
             </div>
           )}
         </div>

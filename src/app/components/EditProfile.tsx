@@ -30,11 +30,11 @@ export default function EditProfile() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-[#FBF6EE] flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-500 text-lg mb-4">Please sign in to edit your profile</p>
+          <p className="text-[#8A7866] text-lg mb-4">Please sign in to edit your profile</p>
           <Link to="/login">
-            <Button variant="contained" sx={{ bgcolor: "#042C53", "&:hover": { bgcolor: "#031d35" } }}>
+            <Button variant="contained" sx={{ bgcolor: "#3A2A1E", "&:hover": { bgcolor: "#2A1C12" } }}>
               Sign in
             </Button>
           </Link>
@@ -66,13 +66,13 @@ export default function EditProfile() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FBF6EE]">
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/" className="inline-block">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
+            <div className="text-2xl font-bold text-[#9A6B3C]">Diaspora</div>
+            <div className="text-xs text-[#8A7866] mt-0.5">by Techqueria NYC</div>
           </Link>
         </div>
       </header>
@@ -82,7 +82,7 @@ export default function EditProfile() {
         {!isOnboarding && (
           <Link
             to="/profile"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#042C53] mb-6 text-sm"
+            className="inline-flex items-center gap-2 text-[#8A7866] hover:text-[#9A6B3C] mb-6 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Profile
@@ -90,11 +90,11 @@ export default function EditProfile() {
         )}
 
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl font-bold text-[#322318] mb-2">
             {isOnboarding ? "Complete your profile" : "Edit Profile"}
           </h1>
           {isOnboarding && (
-            <p className="text-gray-600 mb-6">
+            <p className="text-[#8A7866] mb-6">
               Add your name and at least one community you're part of to continue.
             </p>
           )}
@@ -108,7 +108,7 @@ export default function EditProfile() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Basic Info */}
             <div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Basic info</h2>
+              <h2 className="text-lg font-semibold text-[#322318] mb-4">Basic info</h2>
               <div className="space-y-4">
                 <TextField
                   label="Full name"
@@ -118,10 +118,10 @@ export default function EditProfile() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -135,10 +135,10 @@ export default function EditProfile() {
                   helperText="Format: Role · Industry"
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -151,10 +151,10 @@ export default function EditProfile() {
                   placeholder="https://linkedin.com/in/yourname"
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -163,7 +163,7 @@ export default function EditProfile() {
 
             {/* Identity */}
             <div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Identity</h2>
+              <h2 className="text-lg font-semibold text-[#322318] mb-4">Identity</h2>
               <div className="space-y-4">
                 <FormControl fullWidth required={isOnboarding}>
                   <InputLabel>{isOnboarding ? "Part of *" : "Part of"}</InputLabel>
@@ -175,13 +175,13 @@ export default function EditProfile() {
                     renderValue={(selected) => selected.join(", ")}
                     sx={{
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       }
                     }}
                   >
                     {communities.map((community) => (
                       <MenuItem key={community.id} value={community.name}>
-                        <Checkbox checked={partOf.includes(community.name)} sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />
+                        <Checkbox checked={partOf.includes(community.name)} sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />
                         <ListItemText primary={community.name} />
                       </MenuItem>
                     ))}
@@ -198,13 +198,13 @@ export default function EditProfile() {
                     renderValue={(selected) => selected.join(", ")}
                     sx={{
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       }
                     }}
                   >
                     {communities.map((community) => (
                       <MenuItem key={community.id} value={community.name}>
-                        <Checkbox checked={allyTo.includes(community.name)} sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />
+                        <Checkbox checked={allyTo.includes(community.name)} sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />
                         <ListItemText primary={community.name} />
                       </MenuItem>
                     ))}
@@ -221,8 +221,8 @@ export default function EditProfile() {
                 fullWidth
                 disabled={!canSubmit || saving}
                 sx={{
-                  bgcolor: "#042C53",
-                  "&:hover": { bgcolor: "#031d35" },
+                  bgcolor: "#3A2A1E",
+                  "&:hover": { bgcolor: "#2A1C12" },
                   textTransform: "none",
                   py: 1.5
                 }}
@@ -235,8 +235,8 @@ export default function EditProfile() {
                   variant="outlined"
                   onClick={() => navigate("/profile")}
                   sx={{
-                    borderColor: "#042C53",
-                    color: "#042C53",
+                    borderColor: "#9A6B3C",
+                    color: "#9A6B3C",
                     textTransform: "none",
                     py: 1.5,
                     minWidth: "100px"

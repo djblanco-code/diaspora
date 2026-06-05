@@ -13,9 +13,9 @@ export default function OrganizationDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-500 text-lg mb-4">Organization not found</p>
+          <p className="text-[#8A7866] text-lg mb-4">Organization not found</p>
           <Link to="/browse">
-            <Button variant="contained" sx={{ bgcolor: "#042C53", "&:hover": { bgcolor: "#031d35" } }}>
+            <Button variant="contained" sx={{ bgcolor: "#3A2A1E", "&:hover": { bgcolor: "#2A1C12" } }}>
               Back to Browse
             </Button>
           </Link>
@@ -38,13 +38,13 @@ export default function OrganizationDetail() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-[#FBF6EE]">
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/" className="inline-block">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
+            <div className="text-2xl font-bold text-[#9A6B3C]">Diaspora</div>
+            <div className="text-xs text-[#8A7866] mt-0.5">by Techqueria NYC</div>
           </Link>
         </div>
       </header>
@@ -54,7 +54,7 @@ export default function OrganizationDetail() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
           <Link
             to="/browse"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#042C53] mb-6 text-sm"
+            className="inline-flex items-center gap-2 text-[#8A7866] hover:text-[#9A6B3C] mb-6 text-sm"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Browse
@@ -62,7 +62,7 @@ export default function OrganizationDetail() {
 
           <div className="bg-white rounded-lg overflow-hidden shadow-sm">
             {/* Hero Image */}
-            <div className="aspect-[21/9] bg-gray-200 relative overflow-hidden">
+            <div className="aspect-[21/9] bg-[#EFE0C8] relative overflow-hidden">
               <img
                 src={organization.image_url}
                 alt={organization.name}
@@ -79,7 +79,7 @@ export default function OrganizationDetail() {
                     key={community}
                     label={community}
                     sx={{
-                      bgcolor: "#042C53",
+                      bgcolor: "#3A2A1E",
                       color: "white",
                       fontSize: "0.875rem"
                     }}
@@ -97,27 +97,27 @@ export default function OrganizationDetail() {
               </div>
 
               {/* Name */}
-              <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl lg:text-4xl font-bold text-[#322318] mb-6">
                 {organization.name}
               </h1>
 
               {/* Meta */}
               <div className="flex items-start gap-3 mb-6 pb-6 border-b border-gray-200">
-                <MapPin className="w-5 h-5 text-[#042C53] mt-0.5 shrink-0" />
+                <MapPin className="w-5 h-5 text-[#9A6B3C] mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-medium text-gray-900">{organization.neighborhood}</p>
+                  <p className="font-medium text-[#322318]">{organization.neighborhood}</p>
                 </div>
               </div>
 
               {/* Description */}
               <div className="mb-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">About</h2>
-                <p className="text-gray-700 leading-relaxed">{organization.description}</p>
+                <h2 className="text-xl font-semibold text-[#322318] mb-3">About</h2>
+                <p className="text-[#4A3422] leading-relaxed">{organization.description}</p>
               </div>
 
               {/* Focus Areas */}
               <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 mb-3">Focus Areas</h2>
+                <h2 className="text-xl font-semibold text-[#322318] mb-3">Focus Areas</h2>
                 <div className="flex flex-wrap gap-2">
                   {organization.focus.map(focus => (
                     <Chip
@@ -147,8 +147,8 @@ export default function OrganizationDetail() {
                     fullWidth
                     startIcon={<ExternalLink className="w-4 h-4" />}
                     sx={{
-                      bgcolor: "#042C53",
-                      "&:hover": { bgcolor: "#031d35" },
+                      bgcolor: "#3A2A1E",
+                      "&:hover": { bgcolor: "#2A1C12" },
                       textTransform: "none",
                       py: 1.5,
                       fontSize: "1rem"
@@ -163,9 +163,9 @@ export default function OrganizationDetail() {
                   startIcon={<Share2 className="w-4 h-4" />}
                   onClick={handleShare}
                   sx={{
-                    borderColor: "#042C53",
-                    color: "#042C53",
-                    "&:hover": { borderColor: "#031d35", bgcolor: "#f0f4f8" },
+                    borderColor: "#9A6B3C",
+                    color: "#9A6B3C",
+                    "&:hover": { borderColor: "#2A1C12", bgcolor: "#EFE0C8" },
                     textTransform: "none",
                     py: 1.5,
                     minWidth: { xs: "100%", sm: "auto" }

@@ -155,8 +155,8 @@ export default function Browse() {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4">
           <Link to="/" className="inline-block shrink-0">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
+            <div className="text-2xl font-bold text-[#9A6B3C]">Diaspora</div>
+            <div className="text-xs text-[#8A7866] mt-0.5">by Techqueria NYC</div>
           </Link>
 
           <div className="flex-1 max-w-xl relative lg:ml-[232px]">
@@ -166,7 +166,7 @@ export default function Browse() {
               placeholder="Search events, orgs, topics..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#042C53] focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9A6B3C] focus:border-transparent"
             />
           </div>
 
@@ -183,11 +183,11 @@ export default function Browse() {
               label={community.name}
               onClick={() => toggleCommunity(community.name)}
               sx={{
-                bgcolor: selectedCommunities.includes(community.name) ? "#042C53" : "white",
-                color: selectedCommunities.includes(community.name) ? "white" : "#042C53",
-                border: "1px solid #042C53",
+                bgcolor: selectedCommunities.includes(community.name) ? "#9A6B3C" : "white",
+                color: selectedCommunities.includes(community.name) ? "white" : "#9A6B3C",
+                border: "1px solid #9A6B3C",
                 "&:hover": {
-                  bgcolor: selectedCommunities.includes(community.name) ? "#031d35" : "#f0f4f8"
+                  bgcolor: selectedCommunities.includes(community.name) ? "#2A1C12" : "#EFE0C8"
                 }
               }}
             />
@@ -197,8 +197,8 @@ export default function Browse() {
             startIcon={<SlidersHorizontal className="w-4 h-4" />}
             onClick={() => setMobileFiltersOpen(true)}
             sx={{
-              color: "#042C53",
-              borderColor: "#042C53",
+              color: "#9A6B3C",
+              borderColor: "#9A6B3C",
               textTransform: "none",
               whiteSpace: "nowrap"
             }}
@@ -214,11 +214,11 @@ export default function Browse() {
           <aside className="hidden lg:block w-52 shrink-0">
             <div className="sticky top-24 bg-white rounded-lg border border-gray-200 overflow-hidden">
               {/* Fixed Header */}
-              <div className="px-4 py-3 border-b border-gray-200 bg-gray-50">
+              <div className="px-4 py-3 border-b border-gray-200 bg-[#FBF6EE]">
                 <div className="flex items-center justify-between">
-                  <h2 className="font-semibold text-gray-900">Filters</h2>
+                  <h2 className="font-semibold text-[#322318]">Filters</h2>
                   {activeFilterCount > 0 && (
-                    <span className="text-xs bg-[#042C53] text-white px-2 py-0.5 rounded-full">
+                    <span className="text-xs bg-[#C79A6A] text-white px-2 py-0.5 rounded-full">
                       {activeFilterCount}
                     </span>
                   )}
@@ -239,8 +239,8 @@ export default function Browse() {
                             onChange={() => toggleCommunity(community.name)}
                             size="small"
                             sx={{
-                              color: "#042C53",
-                              "&.Mui-checked": { color: "#042C53" },
+                              color: "#9A6B3C",
+                              "&.Mui-checked": { color: "#9A6B3C" },
                               py: 0.25
                             }}
                           />
@@ -268,8 +268,8 @@ export default function Browse() {
                             onChange={() => toggleType(type)}
                             size="small"
                             sx={{
-                              color: "#042C53",
-                              "&.Mui-checked": { color: "#042C53" },
+                              color: "#9A6B3C",
+                              "&.Mui-checked": { color: "#9A6B3C" },
                               py: 0.25
                             }}
                           />
@@ -297,8 +297,8 @@ export default function Browse() {
                             onChange={() => toggleIndustry(industry)}
                             size="small"
                             sx={{
-                              color: "#042C53",
-                              "&.Mui-checked": { color: "#042C53" },
+                              color: "#9A6B3C",
+                              "&.Mui-checked": { color: "#9A6B3C" },
                               py: 0.25
                             }}
                           />
@@ -321,7 +321,7 @@ export default function Browse() {
                       <RadioGroup value={dateFilter} onChange={e => setDateFilter(e.target.value as DateFilter)}>
                         <FormControlLabel
                           value="week"
-                          control={<Radio size="small" sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" }, py: 0.25 }} />}
+                          control={<Radio size="small" sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" }, py: 0.25 }} />}
                           label="This week"
                           sx={{
                             mb: 0.25,
@@ -332,7 +332,7 @@ export default function Browse() {
                         />
                         <FormControlLabel
                           value="weekend"
-                          control={<Radio size="small" sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" }, py: 0.25 }} />}
+                          control={<Radio size="small" sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" }, py: 0.25 }} />}
                           label="This weekend"
                           sx={{
                             mb: 0.25,
@@ -343,7 +343,7 @@ export default function Browse() {
                         />
                         <FormControlLabel
                           value="month"
-                          control={<Radio size="small" sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" }, py: 0.25 }} />}
+                          control={<Radio size="small" sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" }, py: 0.25 }} />}
                           label="This month"
                           sx={{
                             mb: 0.25,
@@ -354,7 +354,7 @@ export default function Browse() {
                         />
                         <FormControlLabel
                           value="any"
-                          control={<Radio size="small" sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" }, py: 0.25 }} />}
+                          control={<Radio size="small" sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" }, py: 0.25 }} />}
                           label="Any"
                           sx={{
                             mb: 0.25,
@@ -371,13 +371,13 @@ export default function Browse() {
 
               {/* Fixed Footer */}
               {activeFilterCount > 0 && (
-                <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
+                <div className="px-4 py-3 border-t border-gray-200 bg-[#FBF6EE]">
                   <Button
                     variant="text"
                     onClick={clearFilters}
                     size="small"
                     fullWidth
-                    sx={{ color: "#042C53", textTransform: "none", fontSize: "0.875rem" }}
+                    sx={{ color: "#9A6B3C", textTransform: "none", fontSize: "0.875rem" }}
                   >
                     Clear all filters
                   </Button>
@@ -407,11 +407,11 @@ export default function Browse() {
                     fontWeight: 500,
                     color: "#6b7280",
                     "&.Mui-selected": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   },
                   "& .MuiTabs-indicator": {
-                    backgroundColor: "#042C53"
+                    backgroundColor: "#9A6B3C"
                   }
                 }}
               >
@@ -423,11 +423,11 @@ export default function Browse() {
             {/* Results Header */}
             <div className="mb-6">
               <div className="flex items-center justify-between mb-3">
-                <p className="text-gray-600">
+                <p className="text-[#8A7866]">
                   {currentItems.length} {viewMode === "events" ? "event" : "organization"}{currentItems.length !== 1 ? "s" : ""}
                 </p>
-                {viewMode === "events" && <p className="text-sm text-gray-500">Sorted by date</p>}
-                {viewMode === "organizations" && <p className="text-sm text-gray-500">Sorted by name</p>}
+                {viewMode === "events" && <p className="text-sm text-[#8A7866]">Sorted by date</p>}
+                {viewMode === "organizations" && <p className="text-sm text-[#8A7866]">Sorted by name</p>}
               </div>
 
               {/* Active Filter Chips */}
@@ -439,7 +439,7 @@ export default function Browse() {
                       label={community}
                       onDelete={() => toggleCommunity(community)}
                       deleteIcon={<X className="w-4 h-4" />}
-                      sx={{ bgcolor: "#042C53", color: "white" }}
+                      sx={{ bgcolor: "#3A2A1E", color: "white" }}
                     />
                   ))}
                   {selectedTypes.map(type => (
@@ -448,7 +448,7 @@ export default function Browse() {
                       label={type}
                       onDelete={() => toggleType(type)}
                       deleteIcon={<X className="w-4 h-4" />}
-                      sx={{ bgcolor: "white", border: "1px solid #042C53", color: "#042C53" }}
+                      sx={{ bgcolor: "white", border: "1px solid #9A6B3C", color: "#9A6B3C" }}
                     />
                   ))}
                   {selectedIndustries.map(industry => (
@@ -484,13 +484,13 @@ export default function Browse() {
 
             {currentItems.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">
+                <p className="text-[#8A7866] text-lg">
                   No {viewMode === "events" ? "events" : "organizations"} found matching your filters.
                 </p>
                 <Button
                   variant="text"
                   onClick={clearFilters}
-                  sx={{ mt: 2, color: "#042C53", textTransform: "none" }}
+                  sx={{ mt: 2, color: "#9A6B3C", textTransform: "none" }}
                 >
                   Clear filters
                 </Button>

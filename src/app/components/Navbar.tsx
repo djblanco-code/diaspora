@@ -8,16 +8,16 @@ export default function Navbar({ variant = "light" }: { variant?: Variant }) {
 
   const linkClass = isNavy
     ? "hidden sm:inline text-white/90 hover:text-white transition-colors"
-    : "hidden sm:inline text-gray-600 hover:text-[#042C53] transition-colors";
+    : "hidden sm:inline text-[#8A7866] hover:text-[#9A6B3C] transition-colors";
 
   return (
     <nav className="max-w-[1200px] mx-auto px-6 lg:px-20 py-4">
       <div className="flex items-center justify-between">
         <Link to="/" className="inline-block shrink-0">
-          <div className={`text-2xl font-bold ${isNavy ? "text-white" : "text-[#042C53]"}`}>
+          <div className={`text-2xl font-bold ${isNavy ? "text-white" : "text-[#9A6B3C]"}`}>
             Diaspora
           </div>
-          <div className={`text-xs mt-0.5 ${isNavy ? "text-white/70" : "text-gray-500"}`}>
+          <div className={`text-xs mt-0.5 ${isNavy ? "text-white/70" : "text-[#8A7866]"}`}>
             by Techqueria NYC
           </div>
         </Link>

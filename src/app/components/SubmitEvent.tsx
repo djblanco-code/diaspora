@@ -107,15 +107,15 @@ export default function SubmitEvent() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#FBF6EE] flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-lg shadow-sm p-8 text-center">
-          <div className="w-16 h-16 bg-[#042C53] rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-[#C79A6A] rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank you!</h2>
-          <p className="text-gray-600 mb-6">
+          <h2 className="text-2xl font-bold text-[#322318] mb-2">Thank you!</h2>
+          <p className="text-[#8A7866] mb-6">
             We'll review your event and publish it within 48 hours. We'll reach out if we need any additional details.
           </p>
           <Link to="/browse">
@@ -123,8 +123,8 @@ export default function SubmitEvent() {
               variant="contained"
               fullWidth
               sx={{
-                bgcolor: "#042C53",
-                "&:hover": { bgcolor: "#031d35" },
+                bgcolor: "#3A2A1E",
+                "&:hover": { bgcolor: "#2A1C12" },
                 textTransform: "none",
                 py: 1.5
               }}
@@ -138,13 +138,13 @@ export default function SubmitEvent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#FBF6EE]">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/" className="inline-block">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
+            <div className="text-2xl font-bold text-[#9A6B3C]">Diaspora</div>
+            <div className="text-xs text-[#8A7866] mt-0.5">by Techqueria NYC</div>
           </Link>
         </div>
       </header>
@@ -153,22 +153,22 @@ export default function SubmitEvent() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Link
           to="/browse"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-[#042C53] mb-6 text-sm"
+          className="inline-flex items-center gap-2 text-[#8A7866] hover:text-[#9A6B3C] mb-6 text-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Browse
         </Link>
 
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Add Event</h1>
-          <p className="text-gray-600 mb-8">
+          <h1 className="text-3xl font-bold text-[#322318] mb-2">Add Event</h1>
+          <p className="text-[#8A7866] mb-8">
             Share a professional development event with NYC's diaspora communities.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* BASICS */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+              <h2 className="text-xl font-semibold text-[#322318] mb-4 pb-2 border-b border-gray-200">
                 Basics
               </h2>
               <div className="space-y-4">
@@ -180,10 +180,10 @@ export default function SubmitEvent() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -198,13 +198,13 @@ export default function SubmitEvent() {
                     renderValue={(selected) => selected.join(", ")}
                     sx={{
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       }
                     }}
                   >
                     {communities.map((community) => (
                       <MenuItem key={community.id} value={community.name}>
-                        <Checkbox checked={selectedCommunities.includes(community.name)} sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />
+                        <Checkbox checked={selectedCommunities.includes(community.name)} sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />
                         <ListItemText primary={community.name} />
                       </MenuItem>
                     ))}
@@ -220,7 +220,7 @@ export default function SubmitEvent() {
                     label="Event type"
                     sx={{
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       }
                     }}
                   >
@@ -241,10 +241,10 @@ export default function SubmitEvent() {
                   error={goal.length > 120}
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -253,7 +253,7 @@ export default function SubmitEvent() {
 
             {/* WHEN & WHERE */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+              <h2 className="text-xl font-semibold text-[#322318] mb-4 pb-2 border-b border-gray-200">
                 When & Where
               </h2>
               <div className="space-y-4">
@@ -267,10 +267,10 @@ export default function SubmitEvent() {
                   InputLabelProps={{ shrink: true }}
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -286,10 +286,10 @@ export default function SubmitEvent() {
                     InputLabelProps={{ shrink: true }}
                     sx={{
                       "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       },
                       "& .MuiInputLabel-root.Mui-focused": {
-                        color: "#042C53"
+                        color: "#9A6B3C"
                       }
                     }}
                   />
@@ -303,10 +303,10 @@ export default function SubmitEvent() {
                     InputLabelProps={{ shrink: true }}
                     sx={{
                       "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       },
                       "& .MuiInputLabel-root.Mui-focused": {
-                        color: "#042C53"
+                        color: "#9A6B3C"
                       }
                     }}
                   />
@@ -320,10 +320,10 @@ export default function SubmitEvent() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -336,10 +336,10 @@ export default function SubmitEvent() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -352,10 +352,10 @@ export default function SubmitEvent() {
                   required
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -364,19 +364,19 @@ export default function SubmitEvent() {
 
             {/* THE DETAILS */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+              <h2 className="text-xl font-semibold text-[#322318] mb-4 pb-2 border-b border-gray-200">
                 The Details
               </h2>
               <div className="space-y-4">
                 <FormControl component="fieldset" required>
-                  <FormLabel component="legend" sx={{ "&.Mui-focused": { color: "#042C53" } }}>Cost</FormLabel>
+                  <FormLabel component="legend" sx={{ "&.Mui-focused": { color: "#9A6B3C" } }}>Cost</FormLabel>
                   <RadioGroup
                     row
                     value={costType}
                     onChange={(e) => setCostType(e.target.value as "free" | "paid")}
                   >
-                    <FormControlLabel value="free" control={<Radio sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />} label="Free" />
-                    <FormControlLabel value="paid" control={<Radio sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }} />} label="Paid" />
+                    <FormControlLabel value="free" control={<Radio sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />} label="Free" />
+                    <FormControlLabel value="paid" control={<Radio sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }} />} label="Paid" />
                   </RadioGroup>
                 </FormControl>
 
@@ -390,10 +390,10 @@ export default function SubmitEvent() {
                     placeholder="e.g., $25 or $20-$50"
                     sx={{
                       "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       },
                       "& .MuiInputLabel-root.Mui-focused": {
-                        color: "#042C53"
+                        color: "#9A6B3C"
                       }
                     }}
                   />
@@ -408,7 +408,7 @@ export default function SubmitEvent() {
                           setNoLimit(e.target.checked);
                           if (e.target.checked) setCapacity("");
                         }}
-                        sx={{ color: "#042C53", "&.Mui-checked": { color: "#042C53" } }}
+                        sx={{ color: "#9A6B3C", "&.Mui-checked": { color: "#9A6B3C" } }}
                       />
                     }
                     label="No capacity limit"
@@ -425,10 +425,10 @@ export default function SubmitEvent() {
                       sx={{
                         mt: 2,
                         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                          borderColor: "#042C53"
+                          borderColor: "#9A6B3C"
                         },
                         "& .MuiInputLabel-root.Mui-focused": {
-                          color: "#042C53"
+                          color: "#9A6B3C"
                         }
                       }}
                     />
@@ -443,7 +443,7 @@ export default function SubmitEvent() {
                     label="Food"
                     sx={{
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       }
                     }}
                   >
@@ -461,7 +461,7 @@ export default function SubmitEvent() {
                     label="Drinks"
                     sx={{
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       }
                     }}
                   >
@@ -482,10 +482,10 @@ export default function SubmitEvent() {
                     inputProps={{ min: 1 }}
                     sx={{
                       "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       },
                       "& .MuiInputLabel-root.Mui-focused": {
-                        color: "#042C53"
+                        color: "#9A6B3C"
                       }
                     }}
                   />
@@ -495,7 +495,7 @@ export default function SubmitEvent() {
 
             {/* RUN OF SHOW */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+              <h2 className="text-xl font-semibold text-[#322318] mb-4 pb-2 border-b border-gray-200">
                 Run of Show
               </h2>
               <div className="space-y-3">
@@ -511,10 +511,10 @@ export default function SubmitEvent() {
                       sx={{
                         width: "150px",
                         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                          borderColor: "#042C53"
+                          borderColor: "#9A6B3C"
                         },
                         "& .MuiInputLabel-root.Mui-focused": {
-                          color: "#042C53"
+                          color: "#9A6B3C"
                         }
                       }}
                     />
@@ -525,10 +525,10 @@ export default function SubmitEvent() {
                       fullWidth
                       sx={{
                         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                          borderColor: "#042C53"
+                          borderColor: "#9A6B3C"
                         },
                         "& .MuiInputLabel-root.Mui-focused": {
-                          color: "#042C53"
+                          color: "#9A6B3C"
                         }
                       }}
                     />
@@ -549,12 +549,12 @@ export default function SubmitEvent() {
                   startIcon={<Plus className="w-4 h-4" />}
                   onClick={addItineraryStep}
                   sx={{
-                    color: "#042C53",
-                    borderColor: "#042C53",
+                    color: "#9A6B3C",
+                    borderColor: "#9A6B3C",
                     textTransform: "none",
                     "&:hover": {
-                      borderColor: "#031d35",
-                      bgcolor: "#f0f4f8"
+                      borderColor: "#2A1C12",
+                      bgcolor: "#EFE0C8"
                     }
                   }}
                 >
@@ -565,7 +565,7 @@ export default function SubmitEvent() {
 
             {/* CONTEXT */}
             <div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+              <h2 className="text-xl font-semibold text-[#322318] mb-4 pb-2 border-b border-gray-200">
                 Context
               </h2>
               <div className="space-y-4">
@@ -578,10 +578,10 @@ export default function SubmitEvent() {
                   helperText="Community + roles, e.g. 'Latina women in tech'"
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -599,10 +599,10 @@ export default function SubmitEvent() {
                   error={description.length > 280}
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -616,16 +616,16 @@ export default function SubmitEvent() {
                     required
                     sx={{
                       "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                        borderColor: "#042C53"
+                        borderColor: "#9A6B3C"
                       },
                       "& .MuiInputLabel-root.Mui-focused": {
-                        color: "#042C53"
+                        color: "#9A6B3C"
                       }
                     }}
                   />
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-[#8A7866] mt-1">
                     Hosting under an org?{" "}
-                    <Link to="/submit-org" className="text-[#042C53] hover:underline">
+                    <Link to="/submit-org" className="text-[#9A6B3C] hover:underline">
                       Add it first
                     </Link>
                   </p>
@@ -644,10 +644,10 @@ export default function SubmitEvent() {
                   error={orgMission.length > 160}
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -662,10 +662,10 @@ export default function SubmitEvent() {
                   placeholder="https://"
                   sx={{
                     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "#042C53"
+                      borderColor: "#9A6B3C"
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#042C53"
+                      color: "#9A6B3C"
                     }
                   }}
                 />
@@ -676,16 +676,16 @@ export default function SubmitEvent() {
                     type="file"
                     accept="image/*"
                     onChange={(e) => setCoverImage(e.target.files?.[0] || null)}
-                    className="block w-full text-sm text-gray-600
+                    className="block w-full text-sm text-[#8A7866]
                       file:mr-4 file:py-2 file:px-4
                       file:rounded-md file:border-0
                       file:text-sm file:font-medium
-                      file:bg-[#042C53] file:text-white
-                      hover:file:bg-[#031d35]
+                      file:bg-[#C79A6A] file:text-white
+                      hover:file:bg-[#2A1C12]
                       file:cursor-pointer cursor-pointer"
                   />
                   {coverImage && (
-                    <p className="text-sm text-gray-600 mt-2">Selected: {coverImage.name}</p>
+                    <p className="text-sm text-[#8A7866] mt-2">Selected: {coverImage.name}</p>
                   )}
                 </div>
               </div>
@@ -699,8 +699,8 @@ export default function SubmitEvent() {
                 fullWidth
                 disabled={!isFormValid()}
                 sx={{
-                  bgcolor: "#042C53",
-                  "&:hover": { bgcolor: "#031d35" },
+                  bgcolor: "#3A2A1E",
+                  "&:hover": { bgcolor: "#2A1C12" },
                   "&.Mui-disabled": {
                     bgcolor: "#e5e7eb",
                     color: "#9ca3af"
@@ -713,7 +713,7 @@ export default function SubmitEvent() {
                 Add Event
               </Button>
               {!isFormValid() && (
-                <p className="text-sm text-gray-500 mt-2 text-center">
+                <p className="text-sm text-[#8A7866] mt-2 text-center">
                   Please fill in all required fields
                 </p>
               )}

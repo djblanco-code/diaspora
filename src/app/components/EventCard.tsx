@@ -18,7 +18,7 @@ export default function EventCard({ event }: EventCardProps) {
     <Link to={`/event/${event.id}`} className="block group">
       <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
         {/* Image */}
-        <div className="aspect-[16/9] bg-gray-200 relative overflow-hidden">
+        <div className="aspect-[16/9] bg-[#EFE0C8] relative overflow-hidden">
           <img
             src={event.image_url}
             alt={event.title}
@@ -36,7 +36,7 @@ export default function EventCard({ event }: EventCardProps) {
                 label={community}
                 size="small"
                 sx={{
-                  bgcolor: "#042C53",
+                  bgcolor: "#3A2A1E",
                   color: "white",
                   fontSize: "0.75rem",
                   height: "24px"
@@ -57,12 +57,12 @@ export default function EventCard({ event }: EventCardProps) {
           </div>
 
           {/* Title */}
-          <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-[#042C53] transition-colors line-clamp-2">
+          <h3 className="font-semibold text-[#322318] mb-2 group-hover:text-[#9A6B3C] transition-colors line-clamp-2">
             {event.title}
           </h3>
 
           {/* Meta */}
-          <div className="space-y-1 text-sm text-gray-600">
+          <div className="space-y-1 text-sm text-[#8A7866]">
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4 shrink-0" />
               <span>
@@ -77,7 +77,7 @@ export default function EventCard({ event }: EventCardProps) {
 
           {/* Register Link */}
           <div className="mt-4 pt-3 border-t border-gray-100">
-            <span className="text-[#042C53] font-medium text-sm group-hover:underline">
+            <span className="text-[#9A6B3C] font-medium text-sm group-hover:underline">
               View details →
             </span>
           </div>
