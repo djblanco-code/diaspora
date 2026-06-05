@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { events } from "../data/events";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
+import Navbar from "./Navbar";
 
 export default function Home() {
   // Get 3 upcoming events for the "Happening Soon" section
@@ -15,57 +16,7 @@ export default function Home() {
       {/* NAVY HERO */}
       <section className="bg-[#042C53] text-white">
         {/* Top Nav */}
-        <nav className="max-w-[1200px] mx-auto px-6 lg:px-20 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="inline-block shrink-0">
-              <div className="text-2xl font-bold text-white">Diaspora</div>
-              <div className="text-xs text-white/70 mt-0.5">by Techqueria NYC</div>
-            </Link>
-            <div className="flex items-center gap-3">
-              <Link to="/browse" className="hidden sm:inline text-white/90 hover:text-white transition-colors">
-                Browse
-              </Link>
-              <Link to="/browse" className="hidden sm:inline text-white/90 hover:text-white transition-colors">
-                Communities
-              </Link>
-              <Link to="/about" className="hidden sm:inline text-white/90 hover:text-white transition-colors">
-                About
-              </Link>
-              <Link to="/submit">
-                <Button
-                  variant="outlined"
-                  sx={{
-                    borderColor: "white",
-                    color: "white",
-                    textTransform: "none",
-                    "&:hover": {
-                      borderColor: "white",
-                      bgcolor: "rgba(255, 255, 255, 0.1)"
-                    }
-                  }}
-                >
-                  Add Event
-                </Button>
-              </Link>
-              <Link to="/submit-org">
-                <Button
-                  variant="outlined"
-                  sx={{
-                    borderColor: "white",
-                    color: "white",
-                    textTransform: "none",
-                    "&:hover": {
-                      borderColor: "white",
-                      bgcolor: "rgba(255, 255, 255, 0.1)"
-                    }
-                  }}
-                >
-                  Add Org
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </nav>
+        <Navbar variant="navy" />
 
         {/* Hero Content */}
         <div className="max-w-[1200px] mx-auto px-6 lg:px-20 py-16 sm:py-24 lg:py-32">

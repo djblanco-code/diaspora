@@ -5,6 +5,7 @@ import { Lock, Linkedin, Calendar, FileText, Star } from "lucide-react";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import MobileBottomNav from "./MobileBottomNav";
+import Navbar from "./Navbar";
 
 export default function Profile() {
   const { user, logout } = useAuth();
@@ -38,11 +39,12 @@ export default function Profile() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <Link to="/" className="inline-block">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
-          </Link>
+        <Navbar />
+      </header>
+
+      {/* Content */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 lg:pb-8">
+        <div className="flex justify-end mb-4">
           <Button
             variant="text"
             onClick={logout}
@@ -51,10 +53,6 @@ export default function Profile() {
             Sign out
           </Button>
         </div>
-      </header>
-
-      {/* Content */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-20 lg:pb-8">
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 mb-6">
           {/* Profile Header */}
           <div className="flex items-start gap-6 mb-6 pb-6 border-b border-gray-200">

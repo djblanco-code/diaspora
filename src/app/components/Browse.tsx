@@ -6,6 +6,7 @@ import { organizations, organizationTypes } from "../data/organizations";
 import EventCard from "./EventCard";
 import OrganizationCard from "./OrganizationCard";
 import MobileBottomNav from "./MobileBottomNav";
+import NavActions from "./NavActions";
 import FilterBottomSheet from "./FilterBottomSheet";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -170,50 +171,7 @@ export default function Browse() {
           </div>
 
           <div className="hidden sm:flex items-center gap-3">
-            <Link to="/submit">
-              <Button
-                variant="outlined"
-                sx={{
-                  borderColor: "#042C53",
-                  color: "#042C53",
-                  textTransform: "none",
-                  "&:hover": {
-                    borderColor: "#031d35",
-                    bgcolor: "#f0f4f8"
-                  }
-                }}
-              >
-                Add Event
-              </Button>
-            </Link>
-            <Link to="/submit-org">
-              <Button
-                variant="outlined"
-                sx={{
-                  borderColor: "#042C53",
-                  color: "#042C53",
-                  textTransform: "none",
-                  "&:hover": {
-                    borderColor: "#031d35",
-                    bgcolor: "#f0f4f8"
-                  }
-                }}
-              >
-                Add Org
-              </Button>
-            </Link>
-            <Link to="/profile">
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: "#042C53",
-                  "&:hover": { bgcolor: "#031d35" },
-                  textTransform: "none"
-                }}
-              >
-                Profile
-              </Button>
-            </Link>
+            <NavActions />
           </div>
         </div>
 

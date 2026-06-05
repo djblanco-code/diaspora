@@ -1,17 +1,13 @@
 import { Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
 import Button from "@mui/material/Button";
+import Navbar from "./Navbar";
 
 export default function About() {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link to="/" className="inline-block">
-            <div className="text-2xl font-bold text-[#042C53]">Diaspora</div>
-            <div className="text-xs text-gray-500 mt-0.5">by Techqueria NYC</div>
-          </Link>
-        </div>
+        <Navbar />
       </header>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
