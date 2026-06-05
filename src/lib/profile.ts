@@ -97,3 +97,70 @@ export async function fetchUserProfile(userId: string): Promise<User | null> {
     onboarding_complete: Boolean(profile.onboarding_complete),
   };
 }
+
+export interface ProfileUpdate {
+  name: string;
+  industry?: string;
+  linkedin_url?: string;
+  avatar?: string;
+  communities_part_of: string[];
+  communities_ally: string[];
+  onboarding_complete?: boolean;
+}
+
+// Persists profile fields and rewrites the user's community tags, then
+// returns the freshly loaded profile.
+export async function saveProfile(userId: string, updates: ProfileUpdate): Promise<User | null> {
+  if (!supabase) return null;
+
+  const profilePatch: Record<string, unknown> = {
+    name: updates.name,
+    industry: updates.industry || null,
+    linkedin_url: updates.linkedin_url || null,
+  };
+  if (updates.avatar !== undefined) profilePatch.avatar_url = updates.avatar || null;
+  if (updates.onboarding_complete !== undefined) {
+    profilePatch.onboarding_complete = updates.onboarding_complete;
+  }
+
+  const { error: updateError } = await supabase
+    .from("profiles")
+    .update(profilePatch)
+    .eq("id", userId);
+  if (updateError) throw new Error(updateError.message);
+
+  const { data: allCommunities } = await supabase.from("communities").select("id, name");
+  const nameToId = new Map<string, string>(
+    (allCommunities ?? []).map((c) => [c.name as string, c.id as string])
+  );
+
+  const { error: deleteError } = await supabase
+    .from("profile_communities")
+    .delete()
+    .eq("profile_id", userId);
+  if (deleteError) throw new Error(deleteError.message);
+
+  // A (profile_id, community_id) pair is unique, so a community can only carry
+  // one relationship. part_of wins over ally when both are selected.
+  const usedIds = new Set<string>();
+  const rows: { profile_id: string; community_id: string; relationship: string }[] = [];
+
+  const addRows = (names: string[], relationship: "part_of" | "ally") => {
+    for (const name of names) {
+      const id = nameToId.get(name);
+      if (!id || usedIds.has(id)) continue;
+      usedIds.add(id);
+      rows.push({ profile_id: userId, community_id: id, relationship });
+    }
+  };
+
+  addRows(updates.communities_part_of, "part_of");
+  addRows(updates.communities_ally, "ally");
+
+  if (rows.length > 0) {
+    const { error: insertError } = await supabase.from("profile_communities").insert(rows);
+    if (insertError) throw new Error(insertError.message);
+  }
+
+  return fetchUserProfile(userId);
+}

@@ -3,6 +3,7 @@ import {
   fetchUserProfile,
   getAuthErrorMessage,
   isDuplicateSignup,
+  saveProfile,
   type SignupResult,
   type User,
 } from "../../lib/profile";
@@ -14,7 +15,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<User | null>;
   signup: (name: string, email: string, password: string) => Promise<SignupResult>;
   logout: () => Promise<void>;
-  updateProfile: (updates: Partial<User>) => void;
+  updateProfile: (updates: Partial<User>) => Promise<void>;
   markAttended: (eventId: string) => void;
   addReview: (eventId: string, eventTitle: string, rating: number, text: string) => void;
   hasAttended: (eventId: string) => boolean;
@@ -127,9 +128,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   };
 
-  const updateProfile = (updates: Partial<User>) => {
+  const updateProfile = async (updates: Partial<User>) => {
     if (!user) return;
-    setUser({ ...user, ...updates });
+    const saved = await saveProfile(user.id, {
+      name: updates.name ?? user.name,
+      industry: updates.industry ?? user.industry,
+      linkedin_url: updates.linkedin_url ?? user.linkedin_url,
+      avatar: updates.avatar ?? user.avatar,
+      communities_part_of: updates.communities_part_of ?? user.communities_part_of,
+      communities_ally: updates.communities_ally ?? user.communities_ally,
+      onboarding_complete: updates.onboarding_complete ?? user.onboarding_complete,
+    });
+    if (saved) setUser(saved);
   };
 
   const markAttended = (eventId: string) => {

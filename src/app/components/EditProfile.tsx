@@ -22,6 +22,11 @@ export default function EditProfile() {
   const [linkedinUrl, setLinkedinUrl] = useState(user?.linkedin_url || "");
   const [partOf, setPartOf] = useState<string[]>(user?.communities_part_of || []);
   const [allyTo, setAllyTo] = useState<string[]>(user?.communities_ally || []);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const isOnboarding = Boolean(user) && !user?.onboarding_complete;
+  const canSubmit = name.trim().length > 0 && (!isOnboarding || partOf.length > 0);
 
   if (!user) {
     return (
@@ -38,16 +43,26 @@ export default function EditProfile() {
     );
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    updateProfile({
-      name,
-      industry,
-      linkedin_url: linkedinUrl,
-      communities_part_of: partOf,
-      communities_ally: allyTo
-    });
-    navigate("/profile");
+    if (!canSubmit) return;
+    setSaving(true);
+    setError(null);
+    try {
+      await updateProfile({
+        name,
+        industry,
+        linkedin_url: linkedinUrl,
+        communities_part_of: partOf,
+        communities_ally: allyTo,
+        onboarding_complete: true,
+      });
+      navigate(isOnboarding ? "/browse" : "/profile");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not save your profile. Please try again.");
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -64,16 +79,31 @@ export default function EditProfile() {
 
       {/* Content */}
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link
-          to="/profile"
-          className="inline-flex items-center gap-2 text-gray-600 hover:text-[#042C53] mb-6 text-sm"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Profile
-        </Link>
+        {!isOnboarding && (
+          <Link
+            to="/profile"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#042C53] mb-6 text-sm"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Profile
+          </Link>
+        )}
 
         <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Edit Profile</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            {isOnboarding ? "Complete your profile" : "Edit Profile"}
+          </h1>
+          {isOnboarding && (
+            <p className="text-gray-600 mb-6">
+              Add your name and at least one community you're part of to continue.
+            </p>
+          )}
+
+          {error && (
+            <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-md px-3 py-2 mb-6">
+              {error}
+            </p>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Basic Info */}
@@ -135,13 +165,13 @@ export default function EditProfile() {
             <div>
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Identity</h2>
               <div className="space-y-4">
-                <FormControl fullWidth>
-                  <InputLabel>Part of</InputLabel>
+                <FormControl fullWidth required={isOnboarding}>
+                  <InputLabel>{isOnboarding ? "Part of *" : "Part of"}</InputLabel>
                   <Select
                     multiple
                     value={partOf}
                     onChange={(e) => setPartOf(typeof e.target.value === 'string' ? e.target.value.split(',') : e.target.value)}
-                    input={<OutlinedInput label="Part of" />}
+                    input={<OutlinedInput label={isOnboarding ? "Part of *" : "Part of"} />}
                     renderValue={(selected) => selected.join(", ")}
                     sx={{
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
@@ -189,6 +219,7 @@ export default function EditProfile() {
                 type="submit"
                 variant="contained"
                 fullWidth
+                disabled={!canSubmit || saving}
                 sx={{
                   bgcolor: "#042C53",
                   "&:hover": { bgcolor: "#031d35" },
@@ -196,22 +227,24 @@ export default function EditProfile() {
                   py: 1.5
                 }}
               >
-                Save changes
+                {saving ? "Saving…" : isOnboarding ? "Continue to Browse" : "Save changes"}
               </Button>
-              <Button
-                type="button"
-                variant="outlined"
-                onClick={() => navigate("/profile")}
-                sx={{
-                  borderColor: "#042C53",
-                  color: "#042C53",
-                  textTransform: "none",
-                  py: 1.5,
-                  minWidth: "100px"
-                }}
-              >
-                Cancel
-              </Button>
+              {!isOnboarding && (
+                <Button
+                  type="button"
+                  variant="outlined"
+                  onClick={() => navigate("/profile")}
+                  sx={{
+                    borderColor: "#042C53",
+                    color: "#042C53",
+                    textTransform: "none",
+                    py: 1.5,
+                    minWidth: "100px"
+                  }}
+                >
+                  Cancel
+                </Button>
+              )}
             </div>
           </form>
         </div>
