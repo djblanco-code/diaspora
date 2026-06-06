@@ -21,6 +21,7 @@ export interface User {
   reviews: Review[];
   avatar?: string;
   onboarding_complete: boolean;
+  is_admin: boolean;
 }
 
 export function getAuthErrorMessage(error: AuthError): string {
@@ -54,7 +55,7 @@ export async function fetchUserProfile(userId: string): Promise<User | null> {
 
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
-    .select("id, name, email, industry, linkedin_url, avatar_url, onboarding_complete")
+    .select("id, name, email, industry, linkedin_url, avatar_url, onboarding_complete, is_admin")
     .eq("id", userId)
     .maybeSingle();
 
@@ -82,6 +83,7 @@ export async function fetchUserProfile(userId: string): Promise<User | null> {
       events_attended: [],
       reviews: [],
       onboarding_complete: false,
+      is_admin: false,
     };
   }
 
@@ -120,6 +122,7 @@ export async function fetchUserProfile(userId: string): Promise<User | null> {
     events_attended: [],
     reviews: [],
     onboarding_complete: Boolean(profile.onboarding_complete),
+    is_admin: Boolean(profile.is_admin),
   };
 }
 

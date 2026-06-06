@@ -31,3 +31,14 @@ export function RequireOnboarded() {
 
   return <Outlet />;
 }
+
+// Requires an admin user; otherwise sends them back to Browse.
+export function RequireAdmin() {
+  const { user, loading } = useAuth();
+
+  if (loading) return <LoadingSplash />;
+  if (!user) return <Navigate to="/login" replace />;
+  if (!user.is_admin) return <Navigate to="/browse" replace />;
+
+  return <Outlet />;
+}

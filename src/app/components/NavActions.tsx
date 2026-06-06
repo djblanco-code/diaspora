@@ -58,6 +58,13 @@ export default function NavActions({ variant = "light" }: { variant?: Variant })
           Add Org
         </Button>
       </Link>
+      {user.is_admin && (
+        <Link to="/admin">
+          <Button variant="outlined" sx={outlinedSx}>
+            Review
+          </Button>
+        </Link>
+      )}
       <Link to="/profile">
         <Button variant="contained" sx={containedSx}>
           Profile

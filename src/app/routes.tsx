@@ -12,7 +12,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
-import { RequireAuth, RequireOnboarded } from "./components/RouteGuards";
+import Admin from "./components/Admin";
+import { RequireAuth, RequireOnboarded, RequireAdmin } from "./components/RouteGuards";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
           { path: "submit", Component: SubmitEvent },
           { path: "submit-org", Component: SubmitOrg },
         ],
+      },
+      // Admins only
+      {
+        Component: RequireAdmin,
+        children: [{ path: "admin", Component: Admin }],
       },
     ],
   },
