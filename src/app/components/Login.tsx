@@ -52,7 +52,6 @@ export default function Login() {
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
             <div className="text-3xl font-bold text-[#9A6B3C]">Diaspora</div>
-            <div className="text-xs text-[#8A7866] mt-1">by Techqueria NYC</div>
           </Link>
           <p className="text-[#8A7866] mt-2">Sign in to your account</p>
         </div>

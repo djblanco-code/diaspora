@@ -67,7 +67,6 @@ export default function OrganizationDetail() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <Link to="/" className="inline-block">
             <div className="text-2xl font-bold text-[#9A6B3C]">Diaspora</div>
-            <div className="text-xs text-[#8A7866] mt-0.5">by Techqueria NYC</div>
           </Link>
         </div>
       </header>

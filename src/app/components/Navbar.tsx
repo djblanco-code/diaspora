@@ -17,9 +17,6 @@ export default function Navbar({ variant = "light" }: { variant?: Variant }) {
           <div className={`text-2xl font-bold ${isNavy ? "text-white" : "text-[#9A6B3C]"}`}>
             Diaspora
           </div>
-          <div className={`text-xs mt-0.5 ${isNavy ? "text-white/70" : "text-[#8A7866]"}`}>
-            by Techqueria NYC
-          </div>
         </Link>
         <div className="flex items-center gap-3">
           <Link to="/browse" className={linkClass}>
