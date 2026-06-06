@@ -1,12 +1,21 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
-import { events, communities } from "../data/events";
+import { communities } from "../data/events";
+import type { Event } from "../data/events";
+import { listPublishedEvents } from "../../lib/events";
 import EventCard from "./EventCard";
 import MobileBottomNav from "./MobileBottomNav";
 import Button from "@mui/material/Button";
 
 export default function CommunityPage() {
   const { communityId } = useParams();
+
+  const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    listPublishedEvents().then(setEvents);
+  }, []);
 
   const community = communities.find(c => c.id === communityId);
   const communityEvents = events

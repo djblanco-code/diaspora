@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router";
 import { ArrowLeft, MapPin, ExternalLink, Utensils, Wine, Calendar, Clock, DollarSign, Users, Star } from "lucide-react";
-import { events } from "../data/events";
+import { getEventById } from "../../lib/events";
+import type { Event } from "../data/events";
 import { useAuth } from "../context/AuthContext";
 import MobileBottomNav from "./MobileBottomNav";
 import Button from "@mui/material/Button";
@@ -16,7 +17,20 @@ export default function EventDetail() {
   const { eventId } = useParams();
   const { user, hasAttended, markAttended, addReview, getReview } = useAuth();
   const navigate = useNavigate();
-  const event = events.find(e => e.id === eventId);
+
+  const [event, setEvent] = useState<Event | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!eventId) {
+      setLoading(false);
+      return;
+    }
+    getEventById(eventId).then(e => {
+      setEvent(e);
+      setLoading(false);
+    });
+  }, [eventId]);
 
   const [reviewDialogOpen, setReviewDialogOpen] = useState(false);
   const [rating, setRating] = useState(0);
@@ -25,6 +39,14 @@ export default function EventDetail() {
 
   const attended = eventId ? hasAttended(eventId) : false;
   const existingReview = eventId ? getReview(eventId) : undefined;
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-[#8A7866]">Loading…</p>
+      </div>
+    );
+  }
 
   if (!event) {
     return (
@@ -88,7 +110,7 @@ export default function EventDetail() {
   };
 
   const handleSubmitReview = () => {
-    if (!user || !eventId) return;
+    if (!user || !eventId || !event) return;
     addReview(eventId, event.title, rating, reviewText);
     setReviewDialogOpen(false);
     setRating(0);

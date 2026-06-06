@@ -1,13 +1,36 @@
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router";
 import { ArrowLeft, MapPin, Share2, ExternalLink } from "lucide-react";
-import { organizations } from "../data/organizations";
+import { getOrganizationById } from "../../lib/organizations";
+import type { Organization } from "../data/organizations";
 import MobileBottomNav from "./MobileBottomNav";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 
 export default function OrganizationDetail() {
   const { organizationId } = useParams();
-  const organization = organizations.find(o => o.id === organizationId);
+
+  const [organization, setOrganization] = useState<Organization | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!organizationId) {
+      setLoading(false);
+      return;
+    }
+    getOrganizationById(organizationId).then(o => {
+      setOrganization(o);
+      setLoading(false);
+    });
+  }, [organizationId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-[#8A7866]">Loading…</p>
+      </div>
+    );
+  }
 
   if (!organization) {
     return (

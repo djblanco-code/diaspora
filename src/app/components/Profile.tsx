@@ -1,6 +1,8 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useAuth } from "../context/AuthContext";
-import { events } from "../data/events";
+import type { Event } from "../data/events";
+import { listPublishedEvents } from "../../lib/events";
 import { Lock, Linkedin, Calendar, FileText, Star } from "lucide-react";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
@@ -9,6 +11,12 @@ import Navbar from "./Navbar";
 
 export default function Profile() {
   const { user, logout } = useAuth();
+
+  const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    listPublishedEvents().then(setEvents);
+  }, []);
 
   if (!user) {
     return (

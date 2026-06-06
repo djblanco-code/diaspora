@@ -1,13 +1,21 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
-import { events } from "../data/events";
+import { listPublishedEvents } from "../../lib/events";
+import type { Event } from "../data/events";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Navbar from "./Navbar";
 
 export default function Home() {
+  const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    listPublishedEvents().then(setEvents);
+  }, []);
+
   // Get 3 upcoming events for the "Happening Soon" section
-  const upcomingEvents = events
+  const upcomingEvents = [...events]
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .slice(0, 3);
 

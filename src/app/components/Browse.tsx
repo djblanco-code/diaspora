@@ -1,8 +1,12 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router";
 import { Search, SlidersHorizontal, X } from "lucide-react";
-import { events, communities, eventTypes, industries } from "../data/events";
-import { organizations, organizationTypes } from "../data/organizations";
+import { communities, eventTypes, industries } from "../data/events";
+import type { Event } from "../data/events";
+import { organizationTypes } from "../data/organizations";
+import type { Organization } from "../data/organizations";
+import { listPublishedEvents } from "../../lib/events";
+import { listPublishedOrganizations } from "../../lib/organizations";
 import EventCard from "./EventCard";
 import OrganizationCard from "./OrganizationCard";
 import MobileBottomNav from "./MobileBottomNav";
@@ -22,6 +26,14 @@ type DateFilter = "any" | "week" | "weekend" | "month";
 type ViewMode = "events" | "organizations";
 
 export default function Browse() {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [organizations, setOrganizations] = useState<Organization[]>([]);
+
+  useEffect(() => {
+    listPublishedEvents().then(setEvents);
+    listPublishedOrganizations().then(setOrganizations);
+  }, []);
+
   const [viewMode, setViewMode] = useState<ViewMode>("events");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCommunities, setSelectedCommunities] = useState<string[]>([]);
@@ -107,7 +119,7 @@ export default function Browse() {
     }
 
     return filtered.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-  }, [searchQuery, selectedCommunities, selectedTypes, selectedIndustries, dateFilter]);
+  }, [events, searchQuery, selectedCommunities, selectedTypes, selectedIndustries, dateFilter]);
 
   const filteredOrganizations = useMemo(() => {
     let filtered = organizations;
@@ -141,7 +153,7 @@ export default function Browse() {
     }
 
     return filtered.sort((a, b) => a.name.localeCompare(b.name));
-  }, [searchQuery, selectedCommunities, selectedTypes, selectedIndustries]);
+  }, [organizations, searchQuery, selectedCommunities, selectedTypes, selectedIndustries]);
 
   const activeFilterCount =
     selectedCommunities.length + selectedTypes.length + selectedIndustries.length + (viewMode === "events" && dateFilter !== "any" ? 1 : 0);
