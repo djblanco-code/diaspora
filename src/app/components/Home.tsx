@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { listPublishedEvents } from "../../lib/events";
 import type { Event } from "../data/events";
+import { carouselOrgs } from "../data/carouselOrgs";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Navbar from "./Navbar";
@@ -141,100 +142,26 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Logo Carousel */}
+          {/* Logo Carousel — local assets (no Clearbit / ad-blocker issues) */}
           <div className="relative">
             <div className="flex animate-scroll pl-6 lg:pl-20">
-              {/* First set of logos */}
-              {[
-                { name: "/dev/color", domain: "devcolor.org" },
-                { name: "ColorStack", domain: "colorstack.org" },
-                { name: "NSBE", domain: "nsbe.org" },
-                { name: "NABA", domain: "nabainc.org" },
-                { name: "AfroTech", domain: "afrotech.com" },
-                { name: "MLT", domain: "mlt.org" },
-                { name: "Techqueria", domain: "techqueria.org" },
-                { name: "ALPFA", domain: "alpfa.org" },
-                { name: "SHPE", domain: "shpe.org" },
-                { name: "Prospanica", domain: "prospanica.org" },
-                { name: "Latinas in Tech", domain: "latinasintech.org" },
-                { name: "Ascend", domain: "ascendleadership.org" },
-                { name: "Gold House", domain: "goldhouse.org" },
-                { name: "NAAAP", domain: "naaap.org" },
-                { name: "SASE", domain: "saseconnect.org" },
-                { name: "Neythri", domain: "neythri.org" },
-                { name: "NetIP", domain: "netip.org" },
-                { name: "SABANY", domain: "sabany.org" },
-                { name: "CCCADI", domain: "cccadi.org" },
-                { name: "APNET", domain: "apnetny.org" },
-                { name: "African Diaspora Network", domain: "adnconnect.org" },
-                { name: "Network of Arab-American Professionals", domain: "naapusa.org" },
-                { name: "AISES", domain: "aises.org" },
-                { name: "NEPN", domain: "nepn.org" },
-              ].map((org) => (
+              {[...carouselOrgs, ...carouselOrgs].map((org, idx) => (
                 <div
-                  key={org.domain}
+                  key={`${org.domain}-${idx}`}
                   className="flex-shrink-0 flex items-center justify-center p-4 bg-white rounded-lg h-24 w-48 mx-4 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105"
                 >
                   <img
-                    src={`https://logo.clearbit.com/${org.domain}`}
+                    src={org.logo}
                     alt={org.name}
                     className="max-w-full max-h-16 object-contain"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
+                      target.style.display = "none";
                       const parent = target.parentElement;
-                      if (parent && !parent.querySelector('.fallback-text')) {
-                        const text = document.createElement('div');
-                        text.className = 'fallback-text text-sm font-semibold text-[#4A3422] text-center';
-                        text.textContent = org.name;
-                        parent.appendChild(text);
-                      }
-                    }}
-                  />
-                </div>
-              ))}
-              {/* Duplicate set for seamless loop */}
-              {[
-                { name: "/dev/color", domain: "devcolor.org" },
-                { name: "ColorStack", domain: "colorstack.org" },
-                { name: "NSBE", domain: "nsbe.org" },
-                { name: "NABA", domain: "nabainc.org" },
-                { name: "AfroTech", domain: "afrotech.com" },
-                { name: "MLT", domain: "mlt.org" },
-                { name: "Techqueria", domain: "techqueria.org" },
-                { name: "ALPFA", domain: "alpfa.org" },
-                { name: "SHPE", domain: "shpe.org" },
-                { name: "Prospanica", domain: "prospanica.org" },
-                { name: "Latinas in Tech", domain: "latinasintech.org" },
-                { name: "Ascend", domain: "ascendleadership.org" },
-                { name: "Gold House", domain: "goldhouse.org" },
-                { name: "NAAAP", domain: "naaap.org" },
-                { name: "SASE", domain: "saseconnect.org" },
-                { name: "Neythri", domain: "neythri.org" },
-                { name: "NetIP", domain: "netip.org" },
-                { name: "SABANY", domain: "sabany.org" },
-                { name: "CCCADI", domain: "cccadi.org" },
-                { name: "APNET", domain: "apnetny.org" },
-                { name: "African Diaspora Network", domain: "adnconnect.org" },
-                { name: "Network of Arab-American Professionals", domain: "naapusa.org" },
-                { name: "AISES", domain: "aises.org" },
-                { name: "NEPN", domain: "nepn.org" },
-              ].map((org, idx) => (
-                <div
-                  key={`${org.domain}-duplicate-${idx}`}
-                  className="flex-shrink-0 flex items-center justify-center p-4 bg-white rounded-lg h-24 w-48 mx-4 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105"
-                >
-                  <img
-                    src={`https://logo.clearbit.com/${org.domain}`}
-                    alt={org.name}
-                    className="max-w-full max-h-16 object-contain"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent && !parent.querySelector('.fallback-text')) {
-                        const text = document.createElement('div');
-                        text.className = 'fallback-text text-sm font-semibold text-[#4A3422] text-center';
+                      if (parent && !parent.querySelector(".fallback-text")) {
+                        const text = document.createElement("div");
+                        text.className =
+                          "fallback-text text-sm font-semibold text-[#4A3422] text-center px-2";
                         text.textContent = org.name;
                         parent.appendChild(text);
                       }

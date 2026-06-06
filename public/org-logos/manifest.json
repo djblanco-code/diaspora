@@ -1,0 +1,167 @@
+[
+  {
+    "name": "/dev/color",
+    "domain": "devcolor.org",
+    "logo": "/org-logos/devcolor.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/devcolor.org.ico"
+  },
+  {
+    "name": "ColorStack",
+    "domain": "colorstack.org",
+    "logo": "/org-logos/colorstack.org.png",
+    "status": "ok",
+    "source": "https://www.google.com/s2/favicons?domain=colorstack.org&sz=128"
+  },
+  {
+    "name": "NSBE",
+    "domain": "nsbe.org",
+    "logo": "/org-logos/nsbe.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/nsbe.org.ico"
+  },
+  {
+    "name": "NABA",
+    "domain": "nabainc.org",
+    "logo": "/org-logos/nabainc.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/nabainc.org.ico"
+  },
+  {
+    "name": "AfroTech",
+    "domain": "afrotech.com",
+    "logo": "/org-logos/afrotech.com.ico",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/afrotech.com.ico"
+  },
+  {
+    "name": "MLT",
+    "domain": "mlt.org",
+    "logo": "/org-logos/mlt.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/mlt.org.ico"
+  },
+  {
+    "name": "Techqueria",
+    "domain": "techqueria.org",
+    "logo": "/org-logos/techqueria.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/techqueria.org.ico"
+  },
+  {
+    "name": "ALPFA",
+    "domain": "alpfa.org",
+    "logo": "/org-logos/alpfa.org.ico",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/alpfa.org.ico"
+  },
+  {
+    "name": "SHPE",
+    "domain": "shpe.org",
+    "logo": "/org-logos/shpe.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/shpe.org.ico"
+  },
+  {
+    "name": "Prospanica",
+    "domain": "prospanica.org",
+    "logo": "/org-logos/prospanica.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/prospanica.org.ico"
+  },
+  {
+    "name": "Latinas in Tech",
+    "domain": "latinasintech.org",
+    "logo": "/org-logos/latinasintech.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/latinasintech.org.ico"
+  },
+  {
+    "name": "Ascend",
+    "domain": "ascendleadership.org",
+    "logo": "/org-logos/ascendleadership.org.webp",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/ascendleadership.org.ico"
+  },
+  {
+    "name": "Gold House",
+    "domain": "goldhouse.org",
+    "logo": "/org-logos/goldhouse.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/goldhouse.org.ico"
+  },
+  {
+    "name": "NAAAP",
+    "domain": "naaap.org",
+    "logo": "/org-logos/naaap.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/naaap.org.ico"
+  },
+  {
+    "name": "SASE",
+    "domain": "saseconnect.org",
+    "logo": "/org-logos/saseconnect.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/saseconnect.org.ico"
+  },
+  {
+    "name": "Neythri",
+    "domain": "neythri.org",
+    "logo": "/org-logos/neythri.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/neythri.org.ico"
+  },
+  {
+    "name": "NetIP",
+    "domain": "netip.org",
+    "logo": "/org-logos/netip.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/netip.org.ico"
+  },
+  {
+    "name": "SABANY",
+    "domain": "sabany.org",
+    "logo": "/org-logos/sabany.org.webp",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/sabany.org.ico"
+  },
+  {
+    "name": "CCCADI",
+    "domain": "cccadi.org",
+    "logo": "/org-logos/cccadi.org.webp",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/cccadi.org.ico"
+  },
+  {
+    "name": "APNET",
+    "domain": "apnetny.org",
+    "logo": null,
+    "status": "failed"
+  },
+  {
+    "name": "African Diaspora Network",
+    "domain": "adnconnect.org",
+    "logo": null,
+    "status": "failed"
+  },
+  {
+    "name": "Network of Arab-American Professionals",
+    "domain": "naapusa.org",
+    "logo": null,
+    "status": "failed"
+  },
+  {
+    "name": "AISES",
+    "domain": "aises.org",
+    "logo": "/org-logos/aises.org.png",
+    "status": "ok",
+    "source": "https://icons.duckduckgo.com/ip3/aises.org.ico"
+  },
+  {
+    "name": "NEPN",
+    "domain": "nepn.org",
+    "logo": "/org-logos/nepn.org.png",
+    "status": "ok",
+    "source": "https://www.google.com/s2/favicons?domain=nepn.org&sz=128"
+  }
+]
