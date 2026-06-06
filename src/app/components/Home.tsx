@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 import { listPublishedEvents } from "../../lib/events";
+import { listPublishedOrganizations } from "../../lib/organizations";
 import type { Event } from "../data/events";
+import type { Organization } from "../data/organizations";
 import { carouselOrgs } from "../data/carouselOrgs";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
@@ -10,10 +12,27 @@ import Navbar from "./Navbar";
 
 export default function Home() {
   const [events, setEvents] = useState<Event[]>([]);
+  const [organizations, setOrganizations] = useState<Organization[]>([]);
 
   useEffect(() => {
-    listPublishedEvents().then(setEvents);
+    Promise.all([listPublishedEvents(), listPublishedOrganizations()]).then(
+      ([publishedEvents, publishedOrgs]) => {
+        setEvents(publishedEvents);
+        setOrganizations(publishedOrgs);
+      }
+    );
   }, []);
+
+  const stats = useMemo(() => {
+    const communities = new Set<string>();
+    for (const event of events) event.community.forEach(c => communities.add(c));
+    for (const org of organizations) org.community.forEach(c => communities.add(c));
+    return {
+      events: events.length,
+      communities: communities.size,
+      orgs: organizations.length,
+    };
+  }, [events, organizations]);
 
   // Get 3 upcoming events for the "Happening Soon" section
   const upcomingEvents = [...events]
@@ -75,7 +94,9 @@ export default function Home() {
               </Link>
             </div>
             <p className="text-white/70 text-sm">
-              142 events · 8 communities · 60+ host orgs
+              {stats.events} event{stats.events !== 1 ? "s" : ""} ·{" "}
+              {stats.communities} communit{stats.communities !== 1 ? "ies" : "y"} ·{" "}
+              {stats.orgs} host org{stats.orgs !== 1 ? "s" : ""}
             </p>
           </div>
         </div>
