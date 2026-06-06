@@ -47,15 +47,15 @@ export default function Home() {
         <Navbar variant="navy" />
 
         {/* Hero Content */}
-        <div className="max-w-[1200px] mx-auto px-6 lg:px-20 py-16 sm:py-24 lg:py-32">
+        <div className="max-w-[1200px] mx-auto px-6 lg:px-20 py-[3.6rem] sm:py-[5.4rem] lg:py-[7.2rem]">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-[1.35rem]">
               Grow your career among your people.
             </h1>
-            <p className="text-xl sm:text-2xl text-white/90 mb-10 leading-relaxed">
+            <p className="text-xl sm:text-2xl text-white/90 mb-9 leading-relaxed">
               One home for the professional events NYC's diaspora communities are already building. By and for Black, Latino, Asian, and beyond.
             </p>
-            <div className="mb-12 flex flex-col sm:flex-row gap-4">
+            <div className="mb-[2.7rem] flex flex-col sm:flex-row gap-[0.9rem]">
               <Link to="/browse">
                 <Button
                   variant="contained"
@@ -103,9 +103,9 @@ export default function Home() {
       </section>
 
       {/* MISSION */}
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white py-[3.6rem] sm:py-[5.4rem]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-20">
-          <p className="text-xs uppercase tracking-wide text-[#8A7866] mb-6">Our mission</p>
+          <p className="text-xs uppercase tracking-wide text-[#8A7866] mb-[1.35rem]">Our mission</p>
           <p className="text-2xl sm:text-3xl lg:text-4xl text-[#322318] leading-relaxed">
             Every week, NYC's diaspora communities host panels, mixers, and workshops that can change a career. They're just scattered across a dozen platforms and group chats, easy to miss. Diaspora brings them into one place, so finding your people and growing your career become the same move.
           </p>
@@ -113,12 +113,12 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white py-[3.6rem] sm:py-[5.4rem]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-20">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#322318] mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#322318] mb-[2.7rem]">
             How it works
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[1.35rem]">
             {[
               {
                 step: 1,
@@ -138,12 +138,12 @@ export default function Home() {
             ].map((item) => (
               <div
                 key={item.step}
-                className="bg-white rounded-lg border border-[#EFE0C8] p-6"
+                className="bg-white rounded-lg border border-[#EFE0C8] p-[1.35rem]"
               >
-                <div className="w-10 h-10 rounded-full bg-[#3A2A1E] text-[#FBF6EE] flex items-center justify-center font-bold mb-4">
+                <div className="w-10 h-10 rounded-full bg-[#3A2A1E] text-[#FBF6EE] flex items-center justify-center font-bold mb-[0.9rem]">
                   {item.step}
                 </div>
-                <h3 className="text-lg font-bold text-[#322318] mb-2">{item.title}</h3>
+                <h3 className="text-lg font-bold text-[#322318] mb-[0.45rem]">{item.title}</h3>
                 <p className="text-[#8A7866] leading-relaxed">{item.description}</p>
               </div>
             ))}
@@ -152,13 +152,13 @@ export default function Home() {
       </section>
 
       {/* POWERED BY THE ORGS */}
-      <section className="bg-[#FBF6EE] py-16 sm:py-24 overflow-hidden">
+      <section className="bg-[#FBF6EE] py-[3.6rem] sm:py-[5.4rem] overflow-hidden">
         <div className="max-w-[1200px] mx-auto">
-          <div className="px-6 lg:px-20 mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#322318] mb-4">
+          <div className="px-6 lg:px-20 mb-[2.7rem]">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#322318] mb-[0.9rem]">
               Powered by the orgs doing the work
             </h2>
-            <p className="text-xl text-[#8A7866] mb-4">
+            <p className="text-xl text-[#8A7866] mb-[0.9rem]">
               Events from the organizations already building the rooms.
             </p>
           </div>
@@ -200,9 +200,9 @@ export default function Home() {
       </section>
 
       {/* HAPPENING SOON */}
-      <section className="bg-white py-16 sm:py-24">
+      <section className="bg-white py-[3.6rem] sm:py-[5.4rem]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-20">
-          <div className="flex items-end justify-between mb-8">
+          <div className="flex items-end justify-between mb-[1.8rem]">
             <h2 className="text-3xl sm:text-4xl font-bold text-[#322318]">
               Happening soon
             </h2>
@@ -210,7 +210,7 @@ export default function Home() {
               See all events →
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1.35rem]">
             {upcomingEvents.map(event => (
               <Link
                 key={event.id}
@@ -247,7 +247,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-semibold text-[#322318] mb-2 line-clamp-2">
+                  <h3 className="font-semibold text-[#322318] mb-[0.45rem] line-clamp-2">
                     {event.title}
                   </h3>
                   <p className="text-sm text-[#8A7866]">
@@ -261,9 +261,9 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-white border-t border-gray-200 py-8">
+      <footer className="bg-white border-t border-gray-200 py-[1.8rem]">
         <div className="max-w-[1200px] mx-auto px-6 lg:px-20">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-[0.9rem]">
             <p className="text-[#8A7866] font-medium">Diaspora · NYC</p>
             <div className="flex items-center gap-6">
               <Link to="/browse" className="text-[#8A7866] hover:text-[#9A6B3C] transition-colors">

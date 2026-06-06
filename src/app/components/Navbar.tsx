@@ -25,9 +25,6 @@ export default function Navbar({ variant = "light" }: { variant?: Variant }) {
           <Link to="/browse" className={linkClass}>
             Communities
           </Link>
-          <Link to="/about" className={linkClass}>
-            About
-          </Link>
           <NavActions variant={variant} />
         </div>
       </div>
