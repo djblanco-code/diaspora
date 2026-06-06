@@ -24,6 +24,13 @@ import Tab from "@mui/material/Tab";
 
 type DateFilter = "any" | "week" | "weekend" | "month";
 type ViewMode = "events" | "organizations";
+type EventSort = "date" | "price";
+
+function parseEventPrice(price: string): number {
+  if (!price || price.toLowerCase() === "free") return 0;
+  const match = price.match(/[\d.]+/);
+  return match ? Number(match[0]) : Number.MAX_SAFE_INTEGER;
+}
 
 export default function Browse() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -43,6 +50,7 @@ export default function Browse() {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
   const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
   const [dateFilter, setDateFilter] = useState<DateFilter>("any");
+  const [eventSort, setEventSort] = useState<EventSort>("date");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const toggleCommunity = (community: string) => {
@@ -121,8 +129,15 @@ export default function Browse() {
       });
     }
 
-    return filtered.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-  }, [events, searchQuery, selectedCommunities, selectedTypes, selectedIndustries, dateFilter]);
+    return filtered.sort((a, b) => {
+      if (eventSort === "price") {
+        const priceDiff = parseEventPrice(a.price) - parseEventPrice(b.price);
+        if (priceDiff !== 0) return priceDiff;
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
+      }
+      return new Date(a.date).getTime() - new Date(b.date).getTime();
+    });
+  }, [events, searchQuery, selectedCommunities, selectedTypes, selectedIndustries, dateFilter, eventSort]);
 
   const filteredOrganizations = useMemo(() => {
     let filtered = organizations;
@@ -441,7 +456,33 @@ export default function Browse() {
                 <p className="text-[#8A7866]">
                   {currentItems.length} {viewMode === "events" ? "event" : "organization"}{currentItems.length !== 1 ? "s" : ""}
                 </p>
-                {viewMode === "events" && <p className="text-sm text-[#8A7866]">Sorted by date</p>}
+                {viewMode === "events" && (
+                  <div className="flex items-center gap-2 text-sm text-[#8A7866]">
+                    <span>Sort:</span>
+                    <button
+                      type="button"
+                      onClick={() => setEventSort("date")}
+                      className={`px-2 py-0.5 rounded transition-colors ${
+                        eventSort === "date"
+                          ? "bg-[#3A2A1E] text-[#FBF6EE] font-medium"
+                          : "text-[#9A6B3C] hover:bg-[#EFE0C8]"
+                      }`}
+                    >
+                      Date
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEventSort("price")}
+                      className={`px-2 py-0.5 rounded transition-colors ${
+                        eventSort === "price"
+                          ? "bg-[#3A2A1E] text-[#FBF6EE] font-medium"
+                          : "text-[#9A6B3C] hover:bg-[#EFE0C8]"
+                      }`}
+                    >
+                      Price
+                    </button>
+                  </div>
+                )}
                 {viewMode === "organizations" && <p className="text-sm text-[#8A7866]">Sorted by name</p>}
               </div>
 
