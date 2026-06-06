@@ -56,9 +56,34 @@ export async function fetchUserProfile(userId: string): Promise<User | null> {
     .from("profiles")
     .select("id, name, email, industry, linkedin_url, avatar_url, onboarding_complete")
     .eq("id", userId)
-    .single();
+    .maybeSingle();
 
-  if (profileError || !profile) return null;
+  if (profileError) {
+    console.error("fetchUserProfile: could not load profile row:", profileError.message);
+  }
+
+  // If the profile row isn't available (not created yet, RLS, or a schema
+  // mismatch), fall back to the auth session so the user stays signed in and
+  // is routed through onboarding instead of appearing logged out.
+  if (!profile) {
+    const {
+      data: { user: authUser },
+    } = await supabase.auth.getUser();
+    if (!authUser) return null;
+
+    const meta = (authUser.user_metadata ?? {}) as Record<string, unknown>;
+    return {
+      id: authUser.id,
+      name: (meta.name as string) || (meta.full_name as string) || "",
+      email: authUser.email ?? "",
+      avatar: (meta.avatar_url as string) || (meta.picture as string) || undefined,
+      communities_part_of: [],
+      communities_ally: [],
+      events_attended: [],
+      reviews: [],
+      onboarding_complete: false,
+    };
+  }
 
   const { data: tags } = await supabase
     .from("profile_communities")
