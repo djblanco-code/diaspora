@@ -35,7 +35,7 @@ export default function Home() {
             <p className="text-xl sm:text-2xl text-white/90 mb-10 leading-relaxed">
               One home for the professional events NYC's diaspora communities are already building. By and for Black, Latino, Asian, and beyond.
             </p>
-            <div className="mb-12">
+            <div className="mb-12 flex flex-col sm:flex-row gap-4">
               <Link to="/browse">
                 <Button
                   variant="contained"
@@ -52,6 +52,24 @@ export default function Home() {
                   }}
                 >
                   Browse events
+                </Button>
+              </Link>
+              <Link to="/browse?view=communities">
+                <Button
+                  variant="outlined"
+                  endIcon={<ArrowRight className="w-5 h-5" />}
+                  sx={{
+                    borderColor: "white",
+                    color: "white",
+                    "&:hover": { borderColor: "white", bgcolor: "rgba(255, 255, 255, 0.1)" },
+                    textTransform: "none",
+                    px: 4,
+                    py: 1.5,
+                    fontSize: "1.125rem",
+                    fontWeight: 600
+                  }}
+                >
+                  Explore communities
                 </Button>
               </Link>
             </div>

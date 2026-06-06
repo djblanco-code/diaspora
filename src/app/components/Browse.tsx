@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { communities, eventTypes, industries } from "../data/events";
 import type { Event } from "../data/events";
@@ -34,7 +34,10 @@ export default function Browse() {
     listPublishedOrganizations().then(setOrganizations);
   }, []);
 
-  const [viewMode, setViewMode] = useState<ViewMode>("events");
+  const [searchParams] = useSearchParams();
+  const [viewMode, setViewMode] = useState<ViewMode>(
+    searchParams.get("view") === "communities" ? "organizations" : "events"
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCommunities, setSelectedCommunities] = useState<string[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
