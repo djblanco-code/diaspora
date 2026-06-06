@@ -146,9 +146,13 @@ export default function Home() {
           <div className="relative">
             <div className="flex animate-scroll pl-6 lg:pl-20">
               {[...carouselOrgs, ...carouselOrgs].map((org, idx) => (
-                <div
+                <a
                   key={`${org.domain}-${idx}`}
-                  className="flex-shrink-0 flex items-center justify-center p-4 bg-white rounded-lg h-24 w-48 mx-4 grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105"
+                  href={org.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={org.name}
+                  className="flex-shrink-0 flex items-center justify-center p-4 bg-white rounded-lg h-24 w-48 mx-4 transition-all duration-300 hover:scale-105 hover:shadow-md"
                 >
                   <img
                     src={org.logo}
@@ -167,7 +171,7 @@ export default function Home() {
                       }
                     }}
                   />
-                </div>
+                </a>
               ))}
             </div>
           </div>
