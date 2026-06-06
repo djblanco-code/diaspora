@@ -87,8 +87,18 @@ export default function Admin() {
                   {events.map(event => (
                     <div
                       key={event.id}
-                      className="bg-white rounded-lg border border-[#EFE0C8] p-5"
+                      className="bg-white rounded-lg border border-[#EFE0C8] overflow-hidden"
                     >
+                      {event.image_url && (
+                        <div className="aspect-[21/9] bg-[#EFE0C8]">
+                          <img
+                            src={event.image_url}
+                            alt={event.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <div className="p-5">
                       <div className="flex flex-wrap gap-2 mb-2">
                         {event.community.map(c => (
                           <Chip
@@ -137,6 +147,7 @@ export default function Admin() {
                           Reject
                         </Button>
                       </div>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -155,8 +166,18 @@ export default function Admin() {
                   {orgs.map(org => (
                     <div
                       key={org.id}
-                      className="bg-white rounded-lg border border-[#EFE0C8] p-5"
+                      className="bg-white rounded-lg border border-[#EFE0C8] overflow-hidden"
                     >
+                      {org.image_url && (
+                        <div className="aspect-[21/9] bg-[#EFE0C8]">
+                          <img
+                            src={org.image_url}
+                            alt={org.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <div className="p-5">
                       <div className="flex flex-wrap gap-2 mb-2">
                         {org.community.map(c => (
                           <Chip
@@ -198,6 +219,7 @@ export default function Admin() {
                         >
                           Reject
                         </Button>
+                      </div>
                       </div>
                     </div>
                   ))}

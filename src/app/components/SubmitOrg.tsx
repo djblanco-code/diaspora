@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { submitOrganization } from "../../lib/organizations";
+import { uploadImage } from "../../lib/storage";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
@@ -67,6 +68,17 @@ export default function SubmitOrg() {
     setSubmitting(true);
     setSubmitError(null);
 
+    const { url: imageUrl, error: uploadError } = await uploadImage(
+      "org-logos",
+      logo!,
+      user.id
+    );
+    if (uploadError || !imageUrl) {
+      setSubmitting(false);
+      setSubmitError(uploadError ?? "Image upload failed.");
+      return;
+    }
+
     const { error } = await submitOrganization(
       {
         name: orgName.trim(),
@@ -74,6 +86,7 @@ export default function SubmitOrg() {
         focus: selectedFocusAreas,
         description: mission.trim(),
         website: website.trim(),
+        image_url: imageUrl,
         neighborhood: city.trim(),
       },
       user.id

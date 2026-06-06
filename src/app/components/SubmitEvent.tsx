@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowLeft, Plus, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { submitEvent } from "../../lib/events";
+import { uploadImage } from "../../lib/storage";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
@@ -110,6 +111,17 @@ export default function SubmitEvent() {
     setSubmitting(true);
     setSubmitError(null);
 
+    const { url: imageUrl, error: uploadError } = await uploadImage(
+      "event-images",
+      coverImage!,
+      user.id
+    );
+    if (uploadError || !imageUrl) {
+      setSubmitting(false);
+      setSubmitError(uploadError ?? "Image upload failed.");
+      return;
+    }
+
     const itineraryString = itinerary
       .filter(step => step.time.trim() !== "" || step.label.trim() !== "")
       .map(step => `${step.time} - ${step.label}`)
@@ -127,6 +139,7 @@ export default function SubmitEvent() {
         neighborhood: neighborhood.trim(),
         price: costType === "free" ? "Free" : price.trim(),
         register_url: registrationLink.trim(),
+        image_url: imageUrl,
         description: description.trim(),
         capacity: noLimit ? "Unlimited" : capacity.trim(),
         food,

@@ -19,11 +19,17 @@ export default function EventCard({ event }: EventCardProps) {
       <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
         {/* Image */}
         <div className="aspect-[16/9] bg-[#EFE0C8] relative overflow-hidden">
-          <img
-            src={event.image_url}
-            alt={event.title}
-            className="w-full h-full object-cover"
-          />
+          {event.image_url ? (
+            <img
+              src={event.image_url}
+              alt={event.title}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-[#8A7866] text-sm">
+              No image
+            </div>
+          )}
         </div>
 
         {/* Content */}
