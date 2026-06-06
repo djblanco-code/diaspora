@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { ArrowLeft, Plus, X } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+import { submitEvent } from "../../lib/events";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Select from "@mui/material/Select";
@@ -23,7 +25,10 @@ interface ItineraryStep {
 }
 
 export default function SubmitEvent() {
+  const { user } = useAuth();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Form state
   const [title, setTitle] = useState("");
@@ -98,11 +103,49 @@ export default function SubmitEvent() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isFormValid()) {
-      setSubmitted(true);
+    if (!isFormValid() || !user) return;
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const itineraryString = itinerary
+      .filter(step => step.time.trim() !== "" || step.label.trim() !== "")
+      .map(step => `${step.time} - ${step.label}`)
+      .join("; ");
+
+    const { error } = await submitEvent(
+      {
+        title: title.trim(),
+        community: selectedCommunities,
+        type: eventType,
+        org: orgName.trim(),
+        date,
+        time: `${startTime} - ${endTime}`,
+        location: address.trim() ? `${venueName.trim()}, ${address.trim()}` : venueName.trim(),
+        neighborhood: neighborhood.trim(),
+        price: costType === "free" ? "Free" : price.trim(),
+        register_url: registrationLink.trim(),
+        description: description.trim(),
+        capacity: noLimit ? "Unlimited" : capacity.trim(),
+        food,
+        drinks: drinks === "Drink tickets" && drinkTickets.trim() ? `${drinks} (${drinkTickets.trim()})` : drinks,
+        goal: goal.trim(),
+        who_for: whoItsFor.trim(),
+        org_mission: orgMission.trim(),
+        itinerary: itineraryString,
+      },
+      user.id
+    );
+
+    setSubmitting(false);
+
+    if (error) {
+      setSubmitError(error);
+      return;
     }
+    setSubmitted(true);
   };
 
   if (submitted) {
@@ -697,7 +740,7 @@ export default function SubmitEvent() {
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={!isFormValid()}
+                disabled={!isFormValid() || submitting}
                 sx={{
                   bgcolor: "#3A2A1E",
                   "&:hover": { bgcolor: "#2A1C12" },
@@ -710,8 +753,13 @@ export default function SubmitEvent() {
                   fontSize: "1rem"
                 }}
               >
-                Add Event
+                {submitting ? "Submitting…" : "Add Event"}
               </Button>
+              {submitError && (
+                <p className="text-sm text-red-600 mt-2 text-center">
+                  {submitError}
+                </p>
+              )}
               {!isFormValid() && (
                 <p className="text-sm text-[#8A7866] mt-2 text-center">
                   Please fill in all required fields

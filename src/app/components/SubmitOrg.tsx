@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { ArrowLeft } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+import { submitOrganization } from "../../lib/organizations";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
@@ -22,7 +24,10 @@ const focusAreas = [
 ];
 
 export default function SubmitOrg() {
+  const { user } = useAuth();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Form state
   const [orgName, setOrgName] = useState("");
@@ -55,11 +60,32 @@ export default function SubmitOrg() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isFormValid()) {
-      setSubmitted(true);
+    if (!isFormValid() || !user) return;
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    const { error } = await submitOrganization(
+      {
+        name: orgName.trim(),
+        community: selectedCommunities,
+        focus: selectedFocusAreas,
+        description: mission.trim(),
+        website: website.trim(),
+        neighborhood: city.trim(),
+      },
+      user.id
+    );
+
+    setSubmitting(false);
+
+    if (error) {
+      setSubmitError(error);
+      return;
     }
+    setSubmitted(true);
   };
 
   if (submitted) {
@@ -396,7 +422,7 @@ export default function SubmitOrg() {
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={!isFormValid()}
+                disabled={!isFormValid() || submitting}
                 sx={{
                   bgcolor: "#3A2A1E",
                   "&:hover": { bgcolor: "#2A1C12" },
@@ -409,8 +435,13 @@ export default function SubmitOrg() {
                   fontSize: "1rem"
                 }}
               >
-                Add Org
+                {submitting ? "Submitting…" : "Add Org"}
               </Button>
+              {submitError && (
+                <p className="text-sm text-red-600 mt-2 text-center">
+                  {submitError}
+                </p>
+              )}
               {!isFormValid() && (
                 <p className="text-sm text-[#8A7866] mt-2 text-center">
                   Please fill in all required fields
